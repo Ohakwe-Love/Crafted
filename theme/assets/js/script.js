@@ -49,6 +49,41 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('focus', () => link.dispatchEvent(new Event('mouseenter')));
         link.addEventListener('blur', () => link.dispatchEvent(new Event('mouseleave')));
     });
+
+    // Search Modal logic
+    var openSearchBtns = document.querySelectorAll('.search-btn');
+    var closeSearchBtn = document.getElementById('closeSearchModal');
+    var searchModal = document.getElementById('searchModal');
+    var searchOverlay = document.getElementById('searchModalOverlay');
+    var searchInput = document.getElementById('searchInput');
+
+    function openSearchModal(e) {
+        if (e) e.preventDefault();
+        searchModal.style.display = 'block';
+        searchOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        setTimeout(function () { searchInput && searchInput.focus(); }, 100);
+    }
+    function closeSearchModal() {
+        searchModal.style.display = 'none';
+        searchOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    openSearchBtns.forEach(function (btn) {
+        btn.addEventListener('click', openSearchModal);
+    });
+    closeSearchBtn.addEventListener('click', closeSearchModal);
+    searchOverlay.addEventListener('click', closeSearchModal);
+    document.addEventListener('keydown', function (e) {
+        if (searchModal.style.display === 'block' && e.key === 'Escape') closeSearchModal();
+    });
+    // Prevent form submit default (for demo)
+    var searchForm = document.getElementById('searchForm');
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        closeSearchModal();
+        alert('Searching for: ' + searchInput.value);
+    });
 });
 
 // drop-down

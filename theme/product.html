@@ -1,0 +1,669 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- css files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/product.css">
+
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/ee0082ad61.js" crossorigin="anonymous"></script>
+
+    <!-- js files -->
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/product.js" defer></script>
+</head>
+
+<body>
+    <!-- aside -->
+    <aside class="top-bar">
+        <div class="container">
+            <div class="top-bar-col">
+                <p class="discount-text">
+
+                </p>
+            </div>
+
+            <div class="top-bar-col">
+                <a href="" class="top-bar-link fancy-link">Help </a>
+
+                <span class="cut-line">|</span>
+
+                <a href="" class="top-bar-link fancy-link"> FAQs</a>
+                <span class="cut-line">|</span>
+
+                <div class="country dropdown-container">
+                    <span>
+                        <img src="https://flagcdn.com/w20/us.png" alt="US Flag">
+                        <em>usd</em>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path
+                                d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z" />
+                        </svg>
+                    </span>
+                    <div class="top-bar-dropdown country-dropdown">
+                        <div class="top-bar-item" data-country="us" data-currency="usd">
+                            <img src="https://flagcdn.com/w20/us.png" alt="US Flag">
+                            <p>USD</p>
+                        </div>
+                        <div class="top-bar-item" data-country="vn" data-currency="vnd">
+                            <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam Flag">
+                            <p>VND</p>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="cut-line">|</span>
+
+                <div class="language dropdown-container">
+                    <span>
+                        <em>English</em>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path
+                                d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z" />
+                        </svg>
+                    </span>
+                    <div class="top-bar-dropdown lang-dropdown">
+                        <div class="top-bar-item" data-lang="en">
+                            <p>English</p>
+                        </div>
+                        <div class="top-bar-item" data-lang="vi">
+                            <p>Tiếng Việt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backdrop for clicking outside to close dropdowns -->
+            <div class="dropdown-backdrop"></div>
+        </div>
+    </aside>
+
+    <!-- header -->
+    <header>
+        <div class="container">
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Logo -->
+            <a href="index.html" class="logo">Crafted.</a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+                <a href="store-locations.html">store location</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- Account -->
+                <button class="account-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                    </svg>
+                </button>
+
+                <!-- Search -->
+                <button class="search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+
+                <!-- Wishlist -->
+                <a href="wishlist.html" class="wishlist-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-suit-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                    </svg>
+                </a>
+
+                <!-- Cart -->
+                <button class="cart-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-cart2" viewBox="0 0 16 16">
+                        <path
+                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                    </svg>
+                    <span class="cart-badge">24</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" id="navMobile">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Crafted.</a>
+
+            <span class="close-menu" id="closeMobileMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+                <a href="store-locations.html">store location</a>
+            </div>
+
+            <div class="mobile-nav-action-btns">
+                <!-- Search -->
+                <button class="search-btn">
+                    Search
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </button>
+
+                <!-- Wishlist -->
+                <a href="wishlist.html" class="wishlist-btn">
+                    Wishlist
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-suit-heart" viewBox="0 0 16 16">
+                        <path
+                            d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="mobile-nav-socials">
+                <p>Follow us on:-</p>
+
+                <div class="socials-container">
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path
+                                d="M240 363.3L240 576L356 576L356 363.3L442.5 363.3L460.5 265.5L356 265.5L356 230.9C356 179.2 376.3 159.4 428.7 159.4C445 159.4 458.1 159.8 465.7 160.6L465.7 71.9C451.4 68 416.4 64 396.2 64C289.3 64 240 114.5 240 223.4L240 265.5L174 265.5L174 363.3L240 363.3z" />
+                        </svg></a>
+
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path
+                                d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z" />
+                        </svg></a>
+
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-twitter-x" viewBox="0 0 16 16">
+                            <path
+                                d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                        </svg></a>
+
+                    <a href=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                            <path
+                                d="M544.5 273.9C500.5 274 457.5 260.3 421.7 234.7L421.7 413.4C421.7 446.5 411.6 478.8 392.7 506C373.8 533.2 347.1 554 316.1 565.6C285.1 577.2 251.3 579.1 219.2 570.9C187.1 562.7 158.3 545 136.5 520.1C114.7 495.2 101.2 464.1 97.5 431.2C93.8 398.3 100.4 365.1 116.1 336C131.8 306.9 156.1 283.3 185.7 268.3C215.3 253.3 248.6 247.8 281.4 252.3L281.4 342.2C266.4 337.5 250.3 337.6 235.4 342.6C220.5 347.6 207.5 357.2 198.4 369.9C189.3 382.6 184.4 398 184.5 413.8C184.6 429.6 189.7 444.8 199 457.5C208.3 470.2 221.4 479.6 236.4 484.4C251.4 489.2 267.5 489.2 282.4 484.3C297.3 479.4 310.4 469.9 319.6 457.2C328.8 444.5 333.8 429.1 333.8 413.4L333.8 64L421.8 64C421.7 71.4 422.4 78.9 423.7 86.2C426.8 102.5 433.1 118.1 442.4 131.9C451.7 145.7 463.7 157.5 477.6 166.5C497.5 179.6 520.8 186.6 544.6 186.6L544.6 274z" />
+                        </svg></a>
+                </div>
+            </div>
+
+            <div class="mobile-nav-payment">
+                <p>Payment:-</p>
+
+                <div class="payment-container">
+                    <a href=""><img src="assets/imgs/payment/amex.png" alt=""></a>
+                    <a href=""><img src="assets/imgs/payment/discover.png" alt=""></a>
+                    <a href=""><img src="assets/imgs/payment/master-card.png" alt=""></a>
+                    <a href=""><img src="assets/imgs/payment/paypal.png" alt=""></a>
+                    <a href=""><img src="assets/imgs/payment/visa.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-nav-footer">
+            <div class="country dropdown-container">
+                <span>
+                    <img src="https://flagcdn.com/w20/us.png" alt="US Flag">
+                    <em>usd</em>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <path
+                            d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z" />
+                    </svg>
+                </span>
+                <div class="top-bar-dropdown country-dropdown">
+                    <div class="top-bar-item" data-country="us" data-currency="usd">
+                        <img src="https://flagcdn.com/w20/us.png" alt="US Flag">
+                        <p>USD</p>
+                    </div>
+                    <div class="top-bar-item" data-country="vn" data-currency="vnd">
+                        <img src="https://flagcdn.com/w20/vn.png" alt="Vietnam Flag">
+                        <p>VND</p>
+                    </div>
+                </div>
+            </div>
+
+            <span class="cut-line">|</span>
+
+            <div class="language dropdown-container">
+                <span>
+                    <em>English</em>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <path
+                            d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z" />
+                    </svg>
+                </span>
+                <div class="top-bar-dropdown lang-dropdown">
+                    <div class="top-bar-item" data-lang="en">
+                        <p>English</p>
+                    </div>
+                    <div class="top-bar-item" data-lang="vi">
+                        <p>Tiếng Việt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+    <main class="singleProductContainer">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="shop.html">Shop</a>
+                <span>/</span>
+                Product Title
+            </div>
+
+            <div class="product-main">
+                <div class="product-images">
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="/api/placeholder/600/500">
+                            <img src="assets/imgs/product-thumbnails/product-2.jpg" alt="">
+                        </div>
+                        <div class="thumbnail" data-image="/api/placeholder/600/500?text=Red">
+                            <img src="assets/imgs/product-thumbnails/product-3.jpg" alt="">
+                        </div>
+                        <div class="thumbnail" data-image="/api/placeholder/600/500?text=Green">
+                            <img src="assets/imgs/product-thumbnails/product-4.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="main-image">
+                        <img src="assets/imgs/product-thumbnails/product-1.jpg" alt="product title">
+                    </div>
+
+                </div>
+
+                <div class="product-information">
+                    <h1 class="product-title">Product Title</h1>
+                    <div class="rating-container">
+                        <div class="stars-con">
+                            <span class="star"><i class="fa-regular fa-star"></i></span>
+                            <span class="star"><i class="fa-regular fa-star"></i></span>
+                            <span class="star"><i class="fa-regular fa-star"></i></span>
+                            <span class="star"><i class="fa-regular fa-star"></i></span>
+                            <span class="star"><i class="fa-regular fa-star"></i></span>
+                        </div>
+                        <a href="#reviews" class="review-link"> Reviews</a>
+                    </div>
+                    <div class="price">
+                        <span class="old-price">$78.00</span>
+                        <span class="discount-price">$45.00</span>
+                        <span class="discount">17%</span>
+                    </div>
+                    <div class="about-product">
+                        <div class="availability">
+                            <span style="font-weight: 600;">Availability:</span>
+
+                            <div class="stock-status">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                In Stock
+                            </div>
+                        </div>
+
+                        <div class="product-tags">
+                            <span style="font-weight: 600;">Tags:</span>
+                            <div class="tags"><span class="tag">Best Seller</span> <span class="tag">Optimum</span>
+                                <span class="tag">Enclosed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quantity-container">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn quantity-item" id="decrease-qty">-</button>
+                            <input type="number" min="1" value="1" class="quantity-input quantity-item" id="qty-input">
+                            <button class="quantity-btn quantity-item" id="increase-qty">+</button>
+                        </div>
+                        <button type="button" class="wishlist-toggle-btn" title="Add to Wishlist">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-suit-heart" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                            </svg>
+                        </button>
+                        <button class="add-to-cart-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            Add to Cart
+                        </button>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="buy-now-btn">
+                            Buy Now
+                        </button>
+                    </div>
+
+                    <div class="delivery-info">
+                        <div class="delivery-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Orders ship within 3 to 5 business days</span>
+                        </div>
+                        <div class="delivery-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                            <span>Free delivery on orders over $200</span>
+                        </div>
+                        <div class="delivery-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Delivery available to all locations in the world</span>
+                        </div>
+                    </div>
+
+                    <div class="checkout-guarantee">
+                        <span>Guarantee Safe Checkout:</span>
+                        <div class="checkout-guarantee-imgs">
+                            <img src="assets/imgs/payment/amex.png" alt="">
+                            <img src="assets/imgs/payment/visa.png" alt="">
+                            <img src="assets/imgs/payment/paypal.png" alt="">
+                            <img src="assets/imgs/payment/discover.png" alt="">
+                            <img src="assets/imgs/payment/master-card.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab-navigation">
+                    <div class="tab-item active" data-tab="description">Description</div>
+                    <div class="tab-item" data-tab="specifications">Specifications</div>
+                    <div class="tab-item" data-tab="reviews">Reviews (0)</div>
+                    <div class="tab-item" data-tab="delivery">Shipping & Returns</div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-panel active" id="description">
+                        <div class="product-desc">
+                            <h3>Description</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis culpa aliquid maxime
+                                quae consequatur, doloribus temporibus quas incidunt doloremque, cum alias. Magni
+                                repellat
+                                cupiditate laudantium, excepturi minus reiciendis. Repellendus corrupti in vel ut vero
+                                quo
+                                nulla incidunt accusantium ducimus aliquid.</p>
+                        </div>
+                        <div class="product-desc">
+                            <h3>Contents</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis culpa aliquid maxime
+                                quae consequatur, doloribus temporibus quas incidunt doloremque, cum alias. Magni
+                                repellat
+                                cupiditate laudantium, excepturi minus reiciendis. Repellendus corrupti in vel ut vero
+                                quo
+                                nulla incidunt accusantium ducimus aliquid.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-panel specifications" id="specifications">
+                        <div class="spec-row">
+                            <div class="spec-label">Lorem ipsum </div>
+                            <div class="spec-value">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
+                                molestias assumenda impedit corrupti corporis obcaecati odit rem quo velit doloribus!
+                            </div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-label">Lorem ipsum </div>
+                            <div class="spec-value">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
+                                molestias assumenda impedit corrupti corporis obcaecati odit rem quo velit doloribus!
+                            </div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-label">Lorem ipsum </div>
+                            <div class="spec-value">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
+                                molestias assumenda impedit corrupti corporis obcaecati odit rem quo velit doloribus!
+                            </div>
+                        </div>
+                        <!-- <div class="spec-row">
+                            <div class="spec-label">No specifications available.</div>
+                        </div> -->
+                        <div class="spec-row">
+                            <div class="spec-label"></div>
+                            <div class="spec-value">W30" x D32" x H42"</div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">Weight</div>
+                            <div class="spec-value">35 lbs</div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">Materials</div>
+                            <div class="spec-value">
+                                <ul class="spec-list">
+                                    <li>Frame: Solid hardwood</li>
+                                    <li>Upholstery: Premium polyester blend fabric</li>
+                                    <li>Legs: Solid beech wood</li>
+                                    <li>Padding: High-density foam</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">Available Colors</div>
+                            <div class="spec-value">
+                                <div class="color-option">
+                                    <span class="color-swatch color-blue"></span>Blue
+                                </div>
+                                <div class="color-option">
+                                    <span class="color-swatch color-red"></span>Red
+                                </div>
+                                <div class="color-option">
+                                    <span class="color-swatch color-green"></span>Green
+                                </div>
+                                <div class="color-option">
+                                    <span class="color-swatch color-gray"></span>Gray
+                                </div>
+                                <div class="color-option">
+                                    <span class="color-swatch color-black"></span>Black
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">Assembly</div>
+                            <div class="spec-value">Minimal assembly required, legs need to be attached</div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">Origin</div>
+                            <div class="spec-value">
+                                <div class="origin-flag">Made in USA
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="spec-row">
+                            <div class="spec-label">Warranty</div>
+                            <div class="spec-value">
+                                <span class="warranty-badge">3-year limited warranty</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="reviews">
+                        <div class="rating-summary">
+                            <div class="rating-number">0.0</div>
+                            <div class="stars-con">
+                                <span class="star"><i class="fa-regular fa-star"></i></span>
+                                <span class="star"><i class="fa-regular fa-star"></i></span>
+                                <span class="star"><i class="fa-regular fa-star"></i></span>
+                                <span class="star"><i class="fa-regular fa-star"></i></span>
+                                <span class="star"><i class="fa-regular fa-star"></i></span>
+                            </div>
+
+                            <div class="rating-count">Based on 0 reviews</div>
+
+                            <div class="rating-breakdown">
+                                <div class="rating-bar">
+                                    <div class="rating-label">5 <span class="label-stars"><i
+                                                class="fa-regular fa-star"></i></span></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="rating-percent">0%</div>
+                                </div>
+
+                                <div class="rating-bar">
+                                    <div class="rating-label">4 <span class="label-stars"><i
+                                                class="fa-regular fa-star"></i></span></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="rating-percent">0%</div>
+                                </div>
+
+                                <div class="rating-bar">
+                                    <div class="rating-label">3 <span class="label-stars"><i
+                                                class="fa-regular fa-star"></i></span></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="rating-percent">0%</div>
+                                </div>
+
+                                <div class="rating-bar">
+                                    <div class="rating-label">2 <span class="label-stars"><i
+                                                class="fa-regular fa-star"></i></span></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="rating-percent">0%</div>
+                                </div>
+
+                                <div class="rating-bar">
+                                    <div class="rating-label">1 <span class="label-stars"><i
+                                                class="fa-regular fa-star"></i></span></div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="rating-percent">0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-prompt">
+                            <div class="prompt-text">
+                                Have you purchased this product? We'd love to hear your thoughts!
+                            </div>
+                            <button class="review-btn" id="openReviewModal">Write a Review</button>
+                        </div>
+
+                        <!-- Review Modal -->
+                        <div class="modal-overlay" id="reviewModalOverlay" style="display:none;"></div>
+                        
+                        <div class="modal" id="reviewModal" style="display:none;">
+                            <div class="modal-content">
+                                <button class="close-modal" id="closeReviewModal" title="Close">&times;</button>
+                                <h2>Write a Review</h2>
+                                <form id="reviewForm">
+                                    <div class="form-group">
+                                        <label for="reviewerName">Name</label>
+                                        <input type="text" id="reviewerName" name="reviewerName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reviewerRating">Rating</label>
+                                        <select id="reviewerRating" name="reviewerRating" required>
+                                            <option value="">Select</option>
+                                            <option value="5">5 - Excellent</option>
+                                            <option value="4">4 - Good</option>
+                                            <option value="3">3 - Average</option>
+                                            <option value="2">2 - Poor</option>
+                                            <option value="1">1 - Terrible</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reviewerText">Review</label>
+                                        <textarea id="reviewerText" name="reviewerText" rows="4" required></textarea>
+                                    </div>
+                                    <button type="submit" class="review-btn">Submit Review</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <p>Customer reviews will appear here. This section would typically include a list of customer
+                            reviews, ratings, and the ability to submit a new review.</p>
+                    </div>
+
+                    <div class="tab-panel" id="delivery">
+                        <p><strong>Shipping Policy:</strong></p>
+                        <p>We offer free standard shipping on all orders over $500. For orders under $500, a flat
+                            shipping
+                            rate of $49 applies. Orders typically ship within 3-5 business days.</p>
+                        <p><strong>Delivery Information:</strong></p>
+                        <p>Your furniture will be delivered to your door by our premium delivery service. For an
+                            additional
+                            fee, we offer white glove delivery service, which includes in-home delivery, assembly, and
+                            packaging removal.</p>
+                        <p><strong>Returns:</strong></p>
+                        <p>We stand behind the quality of our products. If you're not completely satisfied with your
+                            purchase, you may return it within 30 days of delivery for a full refund or exchange. The
+                            item
+                            must be in its original condition and packaging. Return shipping fees may apply.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </x-layout>
