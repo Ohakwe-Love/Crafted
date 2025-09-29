@@ -8,13 +8,14 @@
 
     <!-- css files -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/order-tracking.css">
 
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/ee0082ad61.js" crossorigin="anonymous"></script>
 
     <!-- js files -->
     <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/order-tracking.js" defer></script>
 </head>
 
 <body>
@@ -147,6 +148,27 @@
         </div>
     </header>
 
+    <!-- Search Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="searchModal  modalAnimation" style="display: none;" id="searchModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeSearchModal" title="Close">&times;</button>
+            <form id="searchForm" autocomplete="off">
+                <input type="text" id="searchInput" name="searchInput" placeholder="Search Item" autofocus required>
+                <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                        </path>
+                    </svg></button>
+            </form>
+
+            <div class="search-catergories">
+
+            </div>
+        </div>
+    </div>
+
     <!-- Mobile Navigation -->
     <nav class="nav-mobile" id="navMobile">
         <div class="mobile-nav-header">
@@ -163,7 +185,7 @@
 
         <div class="mobile-nav-content">
             <div class="mobile-nav-links">
-                <a href="index.html">Home</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="about.html">About</a>
                 <a href="shop.html">Shop</a>
                 <a href="contact.html">Contact</a>
@@ -288,14 +310,64 @@
                     <h1>Order Tracking</h1>
 
                     <p>
-                        <a href="index.html">home</a> <span>/ </span> Order Tracking 
+                        <a href="index.html">home</a> <span>/ </span> Order Tracking
                     </p>
                 </div>
             </div>
         </section>
 
-    </main>
+        <section class="order-tracking">
+            <div class="container">
+                <!-- Order Tracking Section -->
+                <div class="order-tracking-col tracking-col">
+                    <h2>Track Your Order</h2>
+                    <p>To track your order, please enter your order ID in the box below and press the "Track" button.
+                        The ID has been sent to you on your receipt and in the confirmation email you received.</p>
 
+                    <form id="trackingForm">
+                        <div class="form-group">
+                            <input type="email" class="form-input" placeholder="Email address*" id="emailInput"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="Billing email*" id="billingInput"
+                                required>
+                        </div>
+                        <button type="submit" class="btn primary-btn" id="trackBtn">
+                            <div class="loading"></div>
+                            Track
+                        </button>
+                        <div class="success-message" id="successMessage">
+                            Order tracking request submitted successfully! You will receive updates via email.
+                        </div>
+                        <div class="error-message" id="errorMessage">
+                            Please check your information and try again.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Account Section -->
+                <div class="order-tracking-col account-col">
+                    <h2>Have An Account</h2>
+                    <p>Welcome back, log in to your account to enhance your shopping experience, receive coupons, and
+                        the best discount codes.</p>
+
+                    <form id="loginForm">
+                        <button type="submit" class="btn primary-btn" id="loginBtn">
+                            <div class="loading"></div>
+                            Login
+                        </button>
+                        <div class="success-message" id="loginSuccessMessage">
+                            Login successful! Redirecting to your dashboard...
+                        </div>
+                        <div class="error-message" id="loginErrorMessage">
+                            Login failed. Please try again.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

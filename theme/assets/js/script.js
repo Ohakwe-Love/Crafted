@@ -1,125 +1,105 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const delayMs = 80; // stagger per letter (ms) — tweak to taste
+// modal-overlay
+const modalOverlay = document.getElementById("modalOverlay");
 
-    document.querySelectorAll('.fancy-link').forEach(link => {
-        // Determine color scheme based on parent .blog-card
-        const inBlogCard = link.closest('.blog-card');
-        const baseColor = inBlogCard ? 'var(--primary-color)' : 'var(--secondary-color)';
-        const hoverColor = inBlogCard ? 'var(--accent-color)' : 'var(--dark-brown)';
+const delayMs = 80;
+document.querySelectorAll('.fancy-link').forEach(link => {
+    // Determine color scheme based on parent .blog-card
+    if (!link) return;
+    const inBlogCard = link.closest('.blog-card');
+    const baseColor = inBlogCard ? 'var(--primary-color)' : 'var(--secondary-color)';
+    const hoverColor = inBlogCard ? 'var(--accent-color)' : 'var(--dark-brown)';
 
-        // Build spans for each character (preserve spaces)
-        const text = link.textContent;
-        const chars = Array.from(text);
-        link.innerHTML = '';
+    // Build spans for each character (preserve spaces)
+    const text = link.textContent;
+    const chars = Array.from(text);
+    link.innerHTML = '';
 
-        const spans = chars.map(ch => {
-            const s = document.createElement('span');
-            s.textContent = ch === ' ' ? '\u00A0' : ch;
-            s.style.color = baseColor;
-            s.style.transition = 'color 200ms ease';
-            link.appendChild(s);
-            return s;
-        });
+    const spans = chars.map(ch => {
+        const s = document.createElement('span');
+        s.textContent = ch === ' ' ? '\u00A0' : ch;
+        s.style.color = baseColor;
+        s.style.transition = 'color 200ms ease';
+        link.appendChild(s);
+        return s;
+    });
 
-        link._fancyTimeouts = [];
+    link._fancyTimeouts = [];
 
-        function clearPending() {
-            while (link._fancyTimeouts.length) {
-                clearTimeout(link._fancyTimeouts.shift());
-            }
+    function clearPending() {
+        while (link._fancyTimeouts.length) {
+            clearTimeout(link._fancyTimeouts.shift());
         }
-
-        link.addEventListener('mouseenter', () => {
-            clearPending();
-            spans.forEach((s, i) => {
-                const t = setTimeout(() => s.style.color = hoverColor, i * delayMs);
-                link._fancyTimeouts.push(t);
-            });
-        });
-
-        link.addEventListener('mouseleave', () => {
-            clearPending();
-            spans.forEach((s, i) => {
-                const reverseDelay = (spans.length - 1 - i) * delayMs;
-                const t = setTimeout(() => s.style.color = baseColor, reverseDelay);
-                link._fancyTimeouts.push(t);
-            });
-        });
-
-        link.addEventListener('focus', () => link.dispatchEvent(new Event('mouseenter')));
-        link.addEventListener('blur', () => link.dispatchEvent(new Event('mouseleave')));
-    });
-
-    // Search Modal logic
-    var openSearchBtns = document.querySelectorAll('.search-btn');
-    var closeSearchBtn = document.getElementById('closeSearchModal');
-    var searchModal = document.getElementById('searchModal');
-    var searchOverlay = document.getElementById('searchModalOverlay');
-    var searchInput = document.getElementById('searchInput');
-
-    function openSearchModal(e) {
-        if (e) e.preventDefault();
-        searchModal.style.display = 'block';
-        searchOverlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        setTimeout(function () { searchInput && searchInput.focus(); }, 100);
     }
-    function closeSearchModal() {
-        searchModal.style.display = 'none';
-        searchOverlay.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-    openSearchBtns.forEach(function (btn) {
-        btn.addEventListener('click', openSearchModal);
+
+    link.addEventListener('mouseenter', () => {
+        clearPending();
+        spans.forEach((s, i) => {
+            if (!s) return;
+            const t = setTimeout(() => s.style.color = hoverColor, i * delayMs);
+            link._fancyTimeouts.push(t);
+        });
     });
-    closeSearchBtn.addEventListener('click', closeSearchModal);
-    searchOverlay.addEventListener('click', closeSearchModal);
-    document.addEventListener('keydown', function (e) {
-        if (searchModal.style.display === 'block' && e.key === 'Escape') closeSearchModal();
+
+    link.addEventListener('mouseleave', () => {
+        clearPending();
+        spans.forEach((s, i) => {
+            if (!s) return;
+            const reverseDelay = (spans.length - 1 - i) * delayMs;
+            const t = setTimeout(() => s.style.color = baseColor, reverseDelay);
+            link._fancyTimeouts.push(t);
+        });
     });
-    // Prevent form submit default (for demo)
-    var searchForm = document.getElementById('searchForm');
-    searchForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        closeSearchModal();
-        alert('Searching for: ' + searchInput.value);
-    });
+
+    link.addEventListener('focus', () => link.dispatchEvent(new Event('mouseenter')));
+    link.addEventListener('blur', () => link.dispatchEvent(new Event('mouseleave')));
 });
 
-// drop-down
+
+// top-bar  drop-down
 class SmoothDropdown {
     constructor() {
         this.dropdownContainers = document.querySelectorAll('.dropdown-container');
         this.backdrop = document.querySelector('.dropdown-backdrop');
         this.activeDropdown = null;
-        this.init();
+        if (this.dropdownContainers && this.backdrop) {
+            this.init();
+        }
     }
 
     init() {
+
+        if (!this.dropdownContainers) return;
         this.dropdownContainers.forEach(container => {
+            if (!container) return;
             const trigger = container.querySelector('span');
             const dropdown = container.querySelector('.top-bar-dropdown');
-            const items = dropdown.querySelectorAll('.top-bar-item');
+            const items = dropdown ? dropdown.querySelectorAll('.top-bar-item') : null;
 
             // Click event for dropdown trigger
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.toggleDropdown(container);
-            });
-
-            // Click events for dropdown items
-            items.forEach(item => {
-                item.addEventListener('click', (e) => {
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    this.selectItem(container, item);
+                    this.toggleDropdown(container);
                 });
-            });
+            }
+            // Click events for dropdown items
+            if (items) {
+                items.forEach(item => {
+                    if (!item) return;
+                    item.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.selectItem(container, item);
+                    });
+                });
+            }
         });
 
         // Backdrop click to close dropdowns
-        this.backdrop.addEventListener('click', () => {
-            this.closeAllDropdowns();
-        });
+        if (this.backdrop) {
+            this.backdrop.addEventListener('click', () => {
+                this.closeAllDropdowns();
+            });
+        }
 
         // Escape key to close dropdowns
         document.addEventListener('keydown', (e) => {
@@ -139,44 +119,44 @@ class SmoothDropdown {
     }
 
     openDropdown(container) {
-        container.classList.add('active');
-        this.backdrop.classList.add('active');
-        this.activeDropdown = container;
+        if (container) container.classList.add('active');
+        if (this.backdrop) this.backdrop.classList.add('active');
+        if (container) this.activeDropdown = container;
     }
 
     closeDropdown(container) {
-        container.classList.remove('active');
+        if (container) container.classList.remove('active');
         if (this.activeDropdown === container) {
             this.activeDropdown = null;
-            this.backdrop.classList.remove('active');
+            if (this.backdrop) this.backdrop.classList.remove('active');
         }
     }
 
     closeAllDropdowns() {
+        if (!this.dropdownContainers) return;
         this.dropdownContainers.forEach(container => {
-            container.classList.remove('active');
+            if (container) container.classList.remove('active');
         });
-        this.backdrop.classList.remove('active');
+        if (this.backdrop) this.backdrop.classList.remove('active');
         this.activeDropdown = null;
     }
 
     selectItem(container, item) {
+        if (!container || !item) return;
         const trigger = container.querySelector('span');
+        if (!trigger) return;
 
         if (container.classList.contains('country')) {
             // Update country/currency selection
             const currency = item.dataset.currency;
-            const flagImg = item.querySelector('img').src;
-
-            trigger.querySelector('img').src = flagImg;
-            trigger.querySelector('em').textContent = currency;
-
+            const flagImg = item.querySelector('img') ? item.querySelector('img').src : '';
+            if (trigger.querySelector('img')) trigger.querySelector('img').src = flagImg;
+            if (trigger.querySelector('em')) trigger.querySelector('em').textContent = currency;
             console.log('Selected currency:', currency);
         } else if (container.classList.contains('language')) {
             // Update language selection
-            const language = item.textContent.trim();
-            trigger.querySelector('em').textContent = language;
-
+            const language = item.textContent ? item.textContent.trim() : '';
+            if (trigger.querySelector('em')) trigger.querySelector('em').textContent = language;
             console.log('Selected language:', language);
         }
 
@@ -201,43 +181,96 @@ document.addEventListener('DOMContentLoaded', () => {
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const cancelMobileMenuBtn = document.getElementById('closeMobileMenu');
 const navMobile = document.getElementById('navMobile');
-const mobileOverlay = document.getElementById('mobileOverlay');
 
-function toggleMobileMenu() {
-    mobileMenuBtn.classList.toggle('active');
-    navMobile.classList.toggle('active');
-    mobileOverlay.classList.toggle('active');
-    document.body.style.overflow = navMobile.classList.contains('active') ? 'hidden' : '';
+function openMobileMenu() {
+    if (mobileMenuBtn) mobileMenuBtn.classList.add('active');
+    if (navMobile) navMobile.classList.add('active');
+    if (modalOverlay) modalOverlay.classList.add('active');
+    if (navMobile && document.body) document.body.style.overflow = navMobile.classList.contains('active') ? 'hidden' : '';
 }
 
-mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-cancelMobileMenuBtn.addEventListener('click', toggleMobileMenu)
-mobileOverlay.addEventListener('click', toggleMobileMenu);
+function closeMobileMenu() {
+    if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+    if (navMobile) navMobile.classList.remove('active');
+    if (modalOverlay) modalOverlay.classList.remove('active');
+    if (document.body) document.body.style.overflow = '';
+}
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+}
+
+if (cancelMobileMenuBtn) {
+    cancelMobileMenuBtn.addEventListener('click', closeMobileMenu)
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeMobileMenu);
+}
 
 // Close mobile menu when clicking on a link
-const mobileLinks = navMobile.querySelectorAll('a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        setTimeout(toggleMobileMenu, 150);
-    });
-});
-
-// Handle scroll effect
-let lastScrollTop = 0;
-const header = document.querySelector('.header');
-
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        header.style.transform = 'translateY(0)';
+let mobileLinks = [];
+if (navMobile) {
+    mobileLinks = navMobile.querySelectorAll('a');
+    if (mobileLinks) {
+        mobileLinks.forEach(link => {
+            if (!link) return;
+            link.addEventListener('click', () => {
+                setTimeout(closeMobileMenu, 150);
+            });
+        });
     }
+}
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+// Search Modal logic
+const openSearchBtns = document.querySelectorAll('.search-btn');
+const closeSearchBtn = document.getElementById('closeSearchModal');
+const searchModal = document.getElementById('searchModal');
+const searchInput = document.getElementById('searchInput');
+
+function openSearchModal(e) {
+    if (e) e.preventDefault();
+    if (searchModal) searchModal.style.display = 'block';
+    if (modalOverlay) modalOverlay.classList.add('active');
+    if (document.body) document.body.style.overflow = 'hidden';
+    setTimeout(function () { if (searchInput) searchInput.focus(); }, 100);
+}
+
+function closeSearchModal() {
+    if (searchModal) searchModal.style.display = 'none';
+    if (modalOverlay) modalOverlay.classList.remove('active');
+    if (document.body) document.body.style.overflow = '';
+}
+
+if (openSearchBtns) {
+    openSearchBtns.forEach(function (btn) {
+        if (!btn) return;
+        btn.addEventListener('click', openSearchModal);
+    });
+}
+
+if (closeSearchBtn) {
+    closeSearchBtn.addEventListener('click', closeSearchModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeSearchModal);
+}
+
+document.addEventListener('keydown', function (e) {
+    if (searchModal && searchModal.classList.contains('active') && e.key === 'Escape') closeSearchModal();
 });
 
+// Prevent form submit default
+const searchForm = document.getElementById('searchForm');
+
+if (searchForm) {
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        closeSearchModal();
+        alert('Searching for: ' + (searchInput ? searchInput.value : ''));
+    });
+}
 
 class HeroSlider {
     constructor() {
@@ -264,21 +297,25 @@ class HeroSlider {
 
         // Pause on hover
         const slider = document.querySelector('.hero-slider');
-        slider.addEventListener('mouseenter', () => this.pauseAutoPlay());
-        slider.addEventListener('mouseleave', () => this.startAutoPlay());
+        if (slider) {
+            slider.addEventListener('mouseenter', () => this.pauseAutoPlay());
+            slider.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
     }
 
     goToSlide(index) {
         // Remove active class from current slide and dot
-        this.slides[this.currentSlide].classList.remove('active');
-        this.dots[this.currentSlide].classList.remove('active');
-
-        // Update current slide
-        this.currentSlide = index;
-
-        // Add active class to new slide and dot
-        this.slides[this.currentSlide].classList.add('active');
-        this.dots[this.currentSlide].classList.add('active');
+        if (this.slides) {
+            this.slides[this.currentSlide].classList.remove('active');
+            this.dots[this.currentSlide].classList.remove('active');
+    
+            // Update current slide
+            this.currentSlide = index;
+    
+            // Add active class to new slide and dot
+            this.slides[this.currentSlide].classList.add('active');
+            this.dots[this.currentSlide].classList.add('active');
+        }
     }
 
     nextSlide() {
@@ -310,134 +347,158 @@ document.addEventListener('DOMContentLoaded', () => {
     new HeroSlider();
 });
 
-// Add smooth scrolling for better UX
-document.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const slider = document.querySelector('.hero-slider');
-    slider.style.transform = `translateY(${scrolled * 0.5}px)`;
-});
+const categoriesTrack = document.querySelector(".categories-track");
 
+if (categoriesTrack) {
+    const categoryItems = document.querySelectorAll(".category-item");
+    const catDotsContainer = document.querySelector(".cat-dots");
 
+    let itemsPerPage = 1;
+    let itemWidth = 0;
+    let totalPages = 0;
+    let currentPage = 0;
 
-let currentSlide = 0;
-const track = document.getElementById('categoriesTrack');
-const dots = document.querySelectorAll('.dot');
-const totalSlides = 3; // 6 items, 2 per slide = 3 slides
+    function updateCategoriesLayout() {
+        const screenWidth = window.innerWidth;
 
-function updateCarousel() {
-    const slideWidth = 100;
-    track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        // Set items per page based on screen size
+        if (screenWidth <= 608) {
+            itemsPerPage = 1;
+        } else if (screenWidth <= 1024) {
+            itemsPerPage = 3;
+        } else {
+            itemsPerPage = 6;
+        }
 
-    // Update dots
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
+        // Get the computed gap from CSS
+        const style = getComputedStyle(categoriesTrack);
+        const gap = parseInt(style.gap || 0, 10);
+
+        // Calculate width per item including gap
+        const containerWidth = categoriesTrack.clientWidth;
+        const totalGap = gap * (itemsPerPage - 1);
+        itemWidth = (containerWidth - totalGap) / itemsPerPage;
+
+        // Set width for each item
+        categoryItems.forEach(item => {
+            item.style.minWidth = `${itemWidth}px`;
+            item.style.maxWidth = `${itemWidth}px`;
+        });
+
+        // Calculate total pages
+        totalPages = Math.ceil(categoryItems.length / itemsPerPage);
+
+        // Render pagination dots
+        renderCatDots();
+
+        // Reset to first page
+        currentPage = 0;
+        goToCategoryPage(currentPage, false);
+    }
+
+    function renderCatDots() {
+        catDotsContainer.innerHTML = "";
+
+        // Only show dots if there's more than one page
+        if (totalPages <= 1) return;
+
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement("span");
+            dot.classList.add("cat-dot");
+
+            if (dot) {
+                if (i === currentPage) dot.classList.add("active");
+    
+                dot.addEventListener("click", () => {
+                    goToCategoryPage(i);
+                });
+    
+                catDotsContainer.appendChild(dot);
+            }
+        }
+    }
+
+    function goToCategoryPage(pageIndex, smooth = true) {
+        if (pageIndex < 0 || pageIndex >= totalPages) return;
+
+        currentPage = pageIndex;
+
+        // Calculate scroll position
+        const scrollX = pageIndex * (itemWidth + 20) * itemsPerPage;
+
+        categoriesTrack.scrollTo({
+            left: scrollX,
+            behavior: smooth ? "smooth" : "instant"
+        });
+
+        updateCatDots();
+    }
+
+    function updateCatDots() {
+        const catDots = document.querySelectorAll(".cat-dot");
+        catDots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentPage);
+        });
+    }
+
+    // Navigation functions
+    function prevCategory() {
+        if (currentPage > 0) {
+            goToCategoryPage(currentPage - 1);
+        }
+    }
+
+    function nextCategory() {
+        if (currentPage < totalPages - 1) {
+            goToCategoryPage(currentPage + 1);
+        }
+    }
+
+    // Sync dots when user scrolls manually
+    let scrollTimeout;
+    categoriesTrack.addEventListener("scroll", () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const scrollLeft = categoriesTrack.scrollLeft;
+            const pageWidth = (itemWidth + 20) * itemsPerPage;
+            const newPage = Math.round(scrollLeft / pageWidth);
+
+            if (newPage !== currentPage && newPage >= 0 && newPage < totalPages) {
+                currentPage = newPage;
+                updateCatDots();
+            }
+        }, 100);
     });
+
+    // Initialize on load and resize
+    window.addEventListener("resize", updateCategoriesLayout);
+    window.addEventListener("load", updateCategoriesLayout);
+
+    // Initial setup
+    updateCategoriesLayout();
 }
-
-// Dot click handlers
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentSlide = index;
-        updateCarousel();
-    });
-});
-
-// Touch/swipe functionality
-let startX = 0;
-let isDragging = false;
-
-track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-});
-
-track.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-});
-
-track.addEventListener('touchend', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-
-    const endX = e.changedTouches[0].clientX;
-    const diff = startX - endX;
-
-    if (Math.abs(diff) > 50) { // Minimum swipe distance
-        if (diff > 0 && currentSlide < totalSlides - 1) {
-            currentSlide++;
-        } else if (diff < 0 && currentSlide > 0) {
-            currentSlide--;
-        }
-        updateCarousel();
-    }
-});
-
-// Mouse drag functionality for desktop testing
-let mouseStartX = 0;
-let isMouseDragging = false;
-
-track.addEventListener('mousedown', (e) => {
-    mouseStartX = e.clientX;
-    isMouseDragging = true;
-    track.style.cursor = 'grabbing';
-});
-
-track.addEventListener('mousemove', (e) => {
-    if (!isMouseDragging) return;
-    e.preventDefault();
-});
-
-track.addEventListener('mouseup', (e) => {
-    if (!isMouseDragging) return;
-    isMouseDragging = false;
-    track.style.cursor = 'grab';
-
-    const endX = e.clientX;
-    const diff = mouseStartX - endX;
-
-    if (Math.abs(diff) > 50) {
-        if (diff > 0 && currentSlide < totalSlides - 1) {
-            currentSlide++;
-        } else if (diff < 0 && currentSlide > 0) {
-            currentSlide--;
-        }
-        updateCarousel();
-    }
-});
-
-track.addEventListener('mouseleave', () => {
-    isMouseDragging = false;
-    track.style.cursor = 'grab';
-});
-
-// Auto-play (optional)
-setInterval(() => {
-    if (window.innerWidth <= 768) { // Only on mobile
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-    }
-}, 5000);
-
 
 // Tab functionality
 const tabBtns = document.querySelectorAll('.tab-btn');
 const productGrids = document.querySelectorAll('.products-grid');
 
 tabBtns.forEach(btn => {
+    if (!btn) return;
     btn.addEventListener('click', () => {
         const targetTab = btn.dataset.tab;
+        if (!targetTab) return;
 
         // Update active tab
-        tabBtns.forEach(b => b.classList.remove('active'));
+        tabBtns.forEach(b => { if (b) b.classList.remove('active'); });
         btn.classList.add('active');
 
         // Show/hide product grids
         productGrids.forEach(grid => {
-            grid.style.display = 'none';
+            if (grid) grid.style.display = 'none';
         });
 
-        document.getElementById(targetTab + '-products').style.display = 'grid';
+        const targetGrid = document.getElementById(targetTab + '-products');
+        if (targetGrid) targetGrid.style.display = 'grid';
     });
 });
 
@@ -454,6 +515,7 @@ function updateCountdown() {
     }
 
     countdownElements.forEach(element => {
+        if (!element) return;
         const now = new Date().getTime();
         const timeLeft = countdownEndDate - now;
 
@@ -463,10 +525,10 @@ function updateCountdown() {
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            element.querySelector('.days').textContent = String(days).padStart(2, '0');
-            element.querySelector('.hours').textContent = String(hours).padStart(2, '0');
-            element.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
-            element.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
+            if (element.querySelector('.days')) element.querySelector('.days').textContent = String(days).padStart(2, '0');
+            if (element.querySelector('.hours')) element.querySelector('.hours').textContent = String(hours).padStart(2, '0');
+            if (element.querySelector('.minutes')) element.querySelector('.minutes').textContent = String(minutes).padStart(2, '0');
+            if (element.querySelector('.seconds')) element.querySelector('.seconds').textContent = String(seconds).padStart(2, '0');
         } else {
             // Reset the countdown when it reaches zero
             countdownEndDate = new Date().getTime() + (24 * 60 * 60 * 1000);
@@ -480,9 +542,11 @@ updateCountdown(); // Initial call
 
 // Wishlist functionality
 document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    if (!btn) return;
     btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const svg = btn.querySelector('svg');
+        if (!svg) return;
 
         if (svg.style.fill === 'currentColor') {
             svg.style.fill = 'none';
@@ -494,29 +558,6 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
     });
 });
 
-// Quick view functionality
-document.querySelectorAll('.quick-view-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        alert('Quick view functionality would open a modal here');
-    });
-});
-
-// Add to cart functionality
-document.querySelectorAll('.add-to-cart').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const originalText = btn.textContent;
-        btn.textContent = 'Added! ✓';
-        btn.style.background = 'var(--success)';
-
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-        }, 2000);
-    });
-});
-
 
 // testimonials 
 class ReviewsCarousel {
@@ -524,7 +565,7 @@ class ReviewsCarousel {
         this.track = document.getElementById('reviewsTrack');
         this.prevArrow = document.getElementById('prevArrow');
         this.nextArrow = document.getElementById('nextArrow');
-        this.cards = this.track.children;
+        this.cards = document.querySelectorAll(".review-card");
         this.currentIndex = 0;
         this.cardsToShow = this.getCardsToShow();
         this.maxIndex = Math.max(0, this.cards.length - this.cardsToShow);
@@ -581,13 +622,15 @@ class ReviewsCarousel {
     }
 
     updateArrows() {
-        // Show/hide and enable/disable arrows based on position
-        this.prevArrow.disabled = this.currentIndex === 0;
-        this.nextArrow.disabled = this.currentIndex >= this.maxIndex;
-
-        // Add active class for visual feedback
-        this.prevArrow.classList.toggle('active', this.currentIndex > 0);
-        this.nextArrow.classList.toggle('active', this.currentIndex < this.maxIndex);
+        if(this.cards) {
+            // Show/hide and enable/disable arrows based on position
+            this.prevArrow.disabled = this.currentIndex === 0;
+            this.nextArrow.disabled = this.currentIndex >= this.maxIndex;
+    
+            // Add active class for visual feedback
+            this.prevArrow.classList.toggle('active', this.currentIndex > 0);
+            this.nextArrow.classList.toggle('active', this.currentIndex < this.maxIndex);
+        }
     }
 
     initTouchSupport() {
@@ -666,16 +709,156 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // scroll-to-top
-window.addEventListener('scroll', function () {
-    const btn = document.querySelector('.scroll-to-top');
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const percent = docHeight ? scrollTop / docHeight : 0;
-    // Border grows from 0deg to 360deg
-    btn.style.setProperty('--scroll-border', `${percent * 360}deg`);
-    if (scrollTop === 0) {
-        btn.classList.add('hide');
+class DynamicScrollToTop {
+    constructor() {
+        this.button = document.getElementById('scrollToTop');
+        this.progressRing = this.button.querySelector('.scroll-progress');
+        this.progressCircle = this.button.querySelector('.scroll-progress-circle');
+        this.lastScrollTop = 0;
+        this.scrollSpeed = 0;
+        this.isThrottled = false;
+        this.showThreshold = 100;
+
+        this.init();
+    }
+
+    init() {
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // Throttled scroll event for better performance
+        window.addEventListener('scroll', () => {
+            if (!this.isThrottled) {
+                requestAnimationFrame(() => {
+                    this.handleScroll();
+                    this.isThrottled = false;
+                });
+                this.isThrottled = true;
+            }
+        });
+
+        // Click event for smooth scroll to top
+        this.button.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.scrollToTop();
+        });
+    }
+
+    handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+        // Calculate scroll speed
+        this.scrollSpeed = Math.abs(scrollTop - this.lastScrollTop);
+        this.lastScrollTop = scrollTop;
+
+        // Show/hide button based on scroll position
+        if (scrollTop > this.showThreshold) {
+            this.button.classList.add('visible');
+        } else {
+            this.button.classList.remove('visible');
+        }
+
+        // Update progress ring
+        this.updateProgressRing(scrollPercent);
+
+        // Add visual feedback based on scroll speed
+        this.updateScrollSpeedFeedback();
+    }
+
+    updateProgressRing(percent) {
+        // SVG circle progress
+        const radius = 22;
+        const circumference = 2 * Math.PI * radius;
+        const progress = Math.max(0, Math.min(percent, 100));
+        const offset = circumference * (1 - progress / 100);
+        if (this.progressCircle) {
+            this.progressCircle.style.strokeDasharray = `${circumference}`;
+            this.progressCircle.style.strokeDashoffset = `${offset}`;
+        }
+    }
+
+    updateScrollSpeedFeedback() {
+        // Remove previous speed classes
+        this.button.classList.remove('fast-scroll');
+    }
+
+    scrollToTop() {
+        const start = window.pageYOffset;
+        const startTime = performance.now();
+        const duration = 800; // Animation duration in ms
+
+        const easeOutCubic = (t) => {
+            return 1 - Math.pow(1 - t, 3);
+        };
+
+        const animateScroll = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutCubic(progress);
+
+            window.scrollTo(0, start * (1 - easedProgress));
+
+            if (progress < 1) {
+                requestAnimationFrame(animateScroll);
+            }
+        };
+
+        requestAnimationFrame(animateScroll);
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new DynamicScrollToTop();
+});
+
+
+// Mobile Accordion Functionality
+function initMobileAccordion() {
+    if (window.innerWidth <= 767) {
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            // Remove any previous click listeners by cloning
+            const newHeader = header.cloneNode(true);
+            header.parentNode.replaceChild(newHeader, header);
+        });
+        // Now re-select headers after cloning
+        const freshHeaders = document.querySelectorAll('.accordion-header');
+        freshHeaders.forEach(header => {
+            header.addEventListener('click', function () {
+                const section = this.closest('.collapsible-section');
+                const isActive = section.classList.contains('active');
+                // Close all sections
+                document.querySelectorAll('.collapsible-section').forEach(s => {
+                    s.classList.remove('active');
+                    s.setAttribute('aria-expanded', 'false');
+                });
+                // Toggle current section
+                if (!isActive) {
+                    section.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+}
+
+// Initialize accordion on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function () {
+    initMobileAccordion();
+});
+
+// Re-initialize on window resize
+window.addEventListener('resize', function () {
+    if (window.innerWidth <= 767) {
+        initMobileAccordion();
     } else {
-        btn.classList.remove('hide');
+        // Remove mobile accordion classes on desktop
+        document.querySelectorAll('.collapsible-section').forEach(section => {
+            section.classList.remove('active');
+        });
     }
 });
