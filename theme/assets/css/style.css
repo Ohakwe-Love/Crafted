@@ -616,7 +616,6 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    /* transform: translateX(10%); */
     overflow: hidden;
     height: 32px;
     border-radius: 4px;
@@ -628,11 +627,6 @@
     animation: scrollText 10s linear infinite;
     padding-left: 100%;
 }
-
-/* .product-card:hover .sale-banner {
-opacity: 1;
-transform: translateY(0);
-} */
 
 @keyframes scrollText {
     0% {

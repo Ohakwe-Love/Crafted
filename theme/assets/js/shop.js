@@ -1,3 +1,35 @@
+// Product Hover click functionality
+const productCardImages = document.querySelectorAll('.product-card .product-image');
+
+if (productCardImages) {
+    productCardImages.forEach(card => {
+        const imgSrc = card.getAttribute('image-src');
+        const hoverImgSrc = card.getAttribute('hover-image-src');
+        const currentImg = card.querySelector('img')
+
+        card.addEventListener('mouseenter', (product) => {
+            currentImg.style.transform = 'translateY(10px)'
+            currentImg.style.opacity = '0'
+
+            setTimeout(() => {
+                currentImg.style.transform = 'translateY(0)'
+                currentImg.style.opacity = '1'
+                currentImg.src = hoverImgSrc
+            }, 100);
+        });
+
+        card.addEventListener('mouseleave', (product) => {
+            currentImg.style.transform = 'translateY(10px)'
+            currentImg.style.opacity = '0'
+
+            setTimeout(() => {
+                currentImg.style.transform = 'translateY(0)';
+                currentImg.style.opacity = '1'
+                currentImg.src = imgSrc
+            }, 100);
+        });
+    });
+}
 
 // Global variables
 let activeFilters = {};

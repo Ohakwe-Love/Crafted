@@ -45,7 +45,7 @@
         const progressAngle = (progress / 100) * 360;
 
         // Update CSS custom property for conic-gradient mask
-        borderProgress.style.setProperty('--progress-angle', `${ progressAngle }deg`);
+        borderProgress.style.setProperty('--progress-angle', `${progressAngle}deg`);
     }
 
     /**
@@ -66,3 +66,115 @@
     // Initial check on page load
     updateScrollButton();
 })();
+
+// Search Modal logic
+const openSearchBtns = document.querySelectorAll('.search-btn');
+const closeSearchBtn = document.getElementById('closeSearchModal');
+const searchModal = document.getElementById('searchModal');
+const searchInput = document.getElementById('searchInput');
+const clearSearchHistory = document.getElementById("clearSearchHistory");
+const searchedItems = document.querySelectorAll(".searchedItem");
+const noSearchFound = document.querySelector(".noSearchFound");
+
+function openSearchModal(e) {
+    if (e) e.preventDefault();
+    if (searchModal) searchModal.style.display = 'block';
+    if (modalOverlay) modalOverlay.classList.add('active');
+    if (document.body) document.body.style.overflow = 'hidden';
+    setTimeout(function () { if (searchInput) searchInput.focus(); }, 100);
+}
+
+function closeSearchModal() {
+    if (searchModal) searchModal.style.display = 'none';
+    if (modalOverlay) modalOverlay.classList.remove('active');
+    if (document.body) document.body.style.overflow = '';
+}
+
+if (openSearchBtns) {
+    openSearchBtns.forEach(function (btn) {
+        if (!btn) return;
+        btn.addEventListener('click', openSearchModal);
+    });
+}
+
+if (closeSearchBtn) {
+    closeSearchBtn.addEventListener('click', closeSearchModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeSearchModal);
+}
+
+document.addEventListener('keydown', function (e) {
+    if (searchModal && searchModal.classList.contains('active') && e.key === 'Escape') closeSearchModal();
+});
+
+// Prevent form submit default
+const searchForm = document.getElementById('searchForm');
+
+if (searchForm) {
+    searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        closeSearchModal();
+        alert('Searching for: ' + (searchInput ? searchInput.value : ''));
+    });
+}
+
+if (!searchedItems) {
+    clearSearchHistory.classList.add("disabled");
+    noSearchFound.classList.add("active");
+} else {
+    clearSearchHistory.addEventListener("click", () => {
+        searchedItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.transition = 'opacity 0.5s';
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.remove();
+                    // After the last item is removed, update classes
+                    if (index === searchedItems.length - 1) {
+                        clearSearchHistory.classList.add("disabled");
+                        noSearchFound.classList.add("active");
+                    }
+                }, 600);
+            }, index * 100);
+        });
+    });
+}
+
+
+
+// Utility Functions
+function handlePreviewToggle(openMenu, menu) {
+    const closeMenu = menu.querySelector('.close-menu');
+
+    openMenu.addEventListener('click', () => {
+        // Hide any open preview before previewing the new one
+        hideAllPreview()
+
+        menu.classList.add('preview')
+        document.body.classList.add('modal-available')
+
+    });
+
+    closeMenu.addEventListener('click', () => {
+        menu.classList.remove('preview')
+        document.body.classList.remove('modal-available')
+    })
+
+    menu.addEventListener('click', (e) => {
+        if (!e.target.closest('[class*="content"]')) {
+            menu.classList.remove('preview')
+            document.body.classList.remove('modal-available')
+        }
+    })
+}
+
+function hideAllPreview() {
+    const openPreview = document.querySelector('[class*="preview"]')
+
+    if (openPreview) {
+        openPreview.classList.remove('preview');
+        document.body.classList.remove('modal-available')
+    }
+}

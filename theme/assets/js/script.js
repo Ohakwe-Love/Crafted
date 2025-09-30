@@ -222,56 +222,6 @@ if (navMobile) {
     }
 }
 
-// Search Modal logic
-const openSearchBtns = document.querySelectorAll('.search-btn');
-const closeSearchBtn = document.getElementById('closeSearchModal');
-const searchModal = document.getElementById('searchModal');
-const searchInput = document.getElementById('searchInput');
-
-function openSearchModal(e) {
-    if (e) e.preventDefault();
-    if (searchModal) searchModal.style.display = 'block';
-    if (modalOverlay) modalOverlay.classList.add('active');
-    if (document.body) document.body.style.overflow = 'hidden';
-    setTimeout(function () { if (searchInput) searchInput.focus(); }, 100);
-}
-
-function closeSearchModal() {
-    if (searchModal) searchModal.style.display = 'none';
-    if (modalOverlay) modalOverlay.classList.remove('active');
-    if (document.body) document.body.style.overflow = '';
-}
-
-if (openSearchBtns) {
-    openSearchBtns.forEach(function (btn) {
-        if (!btn) return;
-        btn.addEventListener('click', openSearchModal);
-    });
-}
-
-if (closeSearchBtn) {
-    closeSearchBtn.addEventListener('click', closeSearchModal);
-}
-
-if (modalOverlay) {
-    modalOverlay.addEventListener('click', closeSearchModal);
-}
-
-document.addEventListener('keydown', function (e) {
-    if (searchModal && searchModal.classList.contains('active') && e.key === 'Escape') closeSearchModal();
-});
-
-// Prevent form submit default
-const searchForm = document.getElementById('searchForm');
-
-if (searchForm) {
-    searchForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        closeSearchModal();
-        alert('Searching for: ' + (searchInput ? searchInput.value : ''));
-    });
-}
-
 class HeroSlider {
     constructor() {
         this.currentSlide = 0;
