@@ -626,6 +626,7 @@
 
 /* Product Cards */
 .product-card {
+    display: block;
     width: 100%;
     background: var(--secondary-color);
     border-radius: 0;

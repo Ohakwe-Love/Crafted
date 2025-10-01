@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crafted Invoice #0079347644 - Professional invoice template">
+    <title>Crafted Invoice #0079347644</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        /* Invoice specific styles */
+        .invoice-container {
+            min-height: 100vh;
+            background-color: var(--secondary-color);
+            padding: 20px;
+        }
+
+        .invoice-header {
+            text-align: center;
+            padding: 40px 40px 30px;
+            background-color: var(--secondary-color);
+
+            h1 {
+                font-size: clamp(47px, 6.5vw, 76px);
+            }
+        }
+
+        .invoice-card {
+            background: var(--white);
+            width: 100%;
+            padding: 60px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .invoice-number {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .invoice-number h2 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 1px solid var(--line);
+            color: var(--primary-color);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-gray);
+        }
+
+        .invoice-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .detail-group:not(:last-child) {
+            padding-right: 10px;
+            border-right: 1px solid var(--line);
+        }
+
+        .detail-group h4 {
+            margin-bottom: 12px;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            color: var(--primary-color) !important;
+        }
+
+        .invoice-table th,
+        .invoice-table td {
+            padding: 20px;
+            text-align: left;
+            color: var(--primary-color) !important;
+            font-size: 18px;
+        }
+
+        .invoice-table th {
+            background-color: var(--secondary-color);
+            font-weight: 600;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .invoice-table td {
+            color: var(--text);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .price-column,
+        .vat-column,
+        .total-column {
+            text-align: right;
+        }
+
+        .total-row {
+            border-top: 2px solid var(--line);
+        }
+
+        .total-row td {
+            font-weight: 500;
+            color: var(--primary-color);
+            padding-top: 20px;
+        }
+
+        .invoice-table .total-amount {
+            color: var(--accent-color) !important;
+            font-weight: 600;
+        }
+
+        .invoice-footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            width: 80%;
+            margin: auto;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-color);
+        }
+
+        .footer-item a {
+            color: var(--tertiary-color);
+        }
+
+        .footer-item a:hover, .footer-item a:active {
+            color: var(--primary-color);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .invoice-container {
+                padding: 20px 0;
+            }
+
+            .invoice-header {
+                padding: 30px 20px 20px;
+            }
+
+            .invoice-card {
+                padding: 40px;
+            }
+
+            .invoice-content {
+                padding: 0 20px 30px;
+            }
+
+            .invoice-number {
+                gap: 15px;
+            }
+
+            .invoice-details {
+                /* grid-template-columns: 1fr 1fr; */
+                gap: 30px;
+                margin-bottom: 30px;
+            }
+
+            .detail-group {
+                border: none !important;
+            }
+
+            .invoice-table {
+                font-size: 14px;
+            }
+
+            .invoice-table th,
+            .invoice-table td {
+                padding: 12px 8px;
+            }
+
+            .invoice-footer {
+                gap: 15px;
+                width: 100%;
+            }
+
+            .footer-item {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .invoice-card {
+                padding: 15px;
+            }
+
+            .invoice-content {
+                padding: 0;
+            }
+
+            .invoice-table th,
+            .invoice-table td {
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            .invoice-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 10px;
+            }
+        }
+
+
+        @media print {
+            body {
+                background: white !important;
+            }
+
+            .invoice-container {
+                background: white !important;
+                padding: 0 !important;
+                min-height: auto !important;
+            }
+
+            .invoice-card {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: none !important;
+            }
+
+            .primary-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-container">
+        <div class="container">
+            <div class="invoice-header">
+                <h1 class="invoice-title">Crafted. Invoice</h1>
+            </div>
+
+            <div class="invoice-card">
+                <div class="invoice-content">
+                    <div class="invoice-number">
+                        <h2>Number #0079347644</h2>
+                        <button class="primary-btn" onclick="downloadInvoice()">
+                            <span>Download</span>
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <!-- <img src="assets/images/logo/logo.svg" alt="Invoice Logo" class="invoice-logo"> -->
+                    </div>
+
+                    <div class="invoice-details">
+                        <div class="detail-group">
+                            <h4>Invoice date:</h4>
+                            <p>April 8, 2025</p>
+                        </div>
+
+                        <div class="detail-group">
+                            <h4>Due date:</h4>
+                            <p>April 8, 2025</p>
+                        </div>
+
+                        <div class="detail-group">
+                            <h4>Supplier:</h4>
+                            <p>
+                                <b>Themesflat LLC</b> <br>
+                                6500 Lorem Street Chicago, IL 55030 Dolor sit amet
+                            </p>
+                        </div>
+
+                        <div class="detail-group">
+                            <h4>Invoice to:</h4>
+                            <p>
+                                <b>Brooklyn Simmons</b> <br>
+                                2972 Westheimer Rd. Santa Ana, Illinois 85486
+                            </p>
+                        </div>
+                    </div>
+
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th class="price-column">Price</th>
+                                <th class="vat-column">VAT (20%)</th>
+                                <th class="total-column">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Description">Standard Plan</td>
+                                <td data-label="Price" class="price-column">$20.00</td>
+                                <td data-label="VAT (20%)" class="vat-column">$10.00</td>
+                                <td data-label="Total" class="total-column">$60.00</td>
+                            </tr>
+                            <tr>
+                                <td data-label="Description">Extra Plan</td>
+                                <td data-label="Price" class="price-column">$20.00</td>
+                                <td data-label="VAT (20%)" class="vat-column">$10.00</td>
+                                <td data-label="Total" class="total-column">$60.00</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td data-label="Total Due">Total Due</td>
+                                <td data-label="" class="price-column"></td>
+                                <td data-label="" class="vat-column"></td>
+                                <td data-label="Amount" class="total-column total-amount">$60.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="invoice-footer">
+                        <div class="footer-item">
+                            <i class="fas fa-globe"></i>
+                            <a href="https://www.Crafted.com">www.Crafted.com</a>
+                        </div>
+                        <div class="footer-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+8(800) 123 4567">+8(800) 123 4567</a>
+                        </div>
+                        <div class="footer-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:themesflat@support.com">themesflat@support.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Download functionality
+        function downloadInvoice() {
+            // Create a print-friendly version
+            window.print();
+        }
+
+        function buttonsChange(params) {
+            const button = document.querySelector('button')
+
+            if (window.innerWidth <= 400) {
+                button.innerHTML = '<i class="fas fa-download"></i>';
+                button.style.border = 'none'
+            } else {
+                const button = document.querySelector('button')
+                button.innerHTML = '<span>Download</span> <i class="fas fa-download"></i>';
+                button.style.border = '';
+            }
+        }
+
+        buttonsChange();
+
+        window.addEventListener('resize', buttonsChange);
+    </script>
+</body>
+
+</html>

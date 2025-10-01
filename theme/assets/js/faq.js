@@ -56,8 +56,8 @@ if (faqItems) {
     });
 
     // Search functionality
-    const searchInput = document.querySelector('.search-input');
-    const searchBtn = document.querySelector('.search-btn');
+    const searchInput = document.querySelector('.faq-search-input');
+    const searchBtn = document.querySelector('.faq-search-btn');
 
     searchBtn.addEventListener('click', function () {
         const searchTerm = searchInput.value.trim();

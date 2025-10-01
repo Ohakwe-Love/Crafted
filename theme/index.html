@@ -110,13 +110,13 @@
             <!-- Header Actions -->
             <div class="header-actions">
                 <!-- Account -->
-                <button class="account-btn">
+                <a href="auth/login.html" class="account-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-person" viewBox="0 0 16 16">
                         <path
                             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                     </svg>
-                </button>
+                </a>
 
                 <!-- Search -->
                 <button class="search-btn">
@@ -137,7 +137,7 @@
                 </a>
 
                 <!-- Cart -->
-                <button class="cart-btn">
+                <button class="cart-btn" id="openCartMenu" onclick="toggleCart()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-cart2" viewBox="0 0 16 16">
                         <path
@@ -234,6 +234,212 @@
 
             </div>
         </div>
+    </div>
+
+    <!-- cart menu -->
+    <div class="cart-menu">
+        <!-- You May Also Like Section -->
+        <aside class="also-like-section">
+            <h3 class="also-like-title">You may also like</h3>
+
+            <div class="also-like-item">
+                <div class="also-like-image-container">
+                    <img src="assets/imgs/products/0.jpg"
+                        alt="Reebok Classic Crew" class="also-like-image">
+                    <span class="also-like-badge">Sale</span>
+                </div>
+                <h4 class="also-like-name">Reebok Classic Crew Neck Sweatshirt</h4>
+                <div class="also-like-prices">
+                    <span class="also-like-old-price">$149.99</span>
+                    <span class="also-like-price">$109.99</span>
+                </div>
+                <button class="also-like-add-btn primary-btn">Add to cart</button>
+            </div>
+
+            <div class="also-like-item">
+                <div class="also-like-image-container">
+                    <img src="assets/imgs/products/product-12.jpg"
+                        alt="Columbia PFG Fishing Shirt" class="also-like-image">
+                    <span class="also-like-badge">Sale</span>
+                </div>
+                <h4 class="also-like-name">Columbia PFG Fishing Shirt</h4>
+                <div class="also-like-prices">
+                    <span class="also-like-old-price badge badge-sale">$59.99</span>
+                    <span class="also-like-price">$39.99</span>
+                </div>
+                <button class="also-like-add-btn primary-btn">Add to cart</button>
+            </div>
+
+            <div class="also-like-item">
+                <div class="also-like-image-container">
+                    <img src="assets/imgs/products/product-13.jpg"
+                        alt="Summer Dress" class="also-like-image">
+                </div>
+                <h4 class="also-like-name">Casual Summer Mini Dress</h4>
+                <div class="also-like-prices">
+                    <span class="also-like-price">$49.99</span>
+                </div>
+                <button class="also-like-add-btn primary-btn">Add to cart</button>
+            </div>
+        </aside>
+
+        <!-- Cart Section -->
+        <section class="cart-menu-section">
+            <!-- Cart Header -->
+            <div class="cart-header">
+                <h2 class="cart-title">Shopping cart</h2>
+                <button class="cart-close" onclick="toggleCart()" aria-label="Close cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <div class="cart-item" data-price="20.00">
+                    <img src="assets/imgs/products/product-2.jpg"
+                        alt="" loading="lazy" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-category">T-shirt</div>
+                        <h4 class="cart-item-name">Queen fashion long sleeve shirt, basic t-shirt</h4>
+                        <div class="cart-item-meta">
+                            <span>Size: XS</span>
+                            <span>Color: <span class="color-circle" style="background-color: #C8A07C;"></span></span>
+                            <span>Price: <span>$20.00</span></span>
+                        </div>
+                        <div class="cart-item-footer">
+                            <div class="cart-item-quantity">
+                                <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
+                            </div>
+                            <span class="cart-item-price">$20.00</span>
+                        </div>
+                    </div>
+                    <button class="cart-item-remove" aria-label="Remove item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="cart-item" data-price="24.99">
+                    <img src="assets/imgs/products/product-13.jpg"
+                        alt="" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-category">T-shirt</div>
+                        <h4 class="cart-item-name">Champion Reverse Weave Pullover</h4>
+                        <div class="cart-item-meta">
+                            <span>Size: L</span>
+                            <span>Color: <span class="color-circle" style="background-color: #8FB896;"></span></span>
+                            <span>Price: <span>$24.00</span></span>
+                        </div>
+                        <div class="cart-item-footer">
+                            <div class="cart-item-quantity">
+                                <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
+                            </div>
+                            <span class="cart-item-price">$24.99</span>
+                        </div>
+                    </div>
+                    <button class="cart-item-remove" aria-label="Remove item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="cart-item" data-price="18.99">
+                    <img src="assets/imgs/products/product-8.jpg"
+                        alt="ASICS Core Running Sweatshirt" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-category">Sweatshirt</div>
+                        <h4 class="cart-item-name">ASICS Core Running Sweatshirt</h4>
+                        <div class="cart-item-meta">
+                            <span>Size: XS</span>
+                            <span>Color: <span class="color-circle" style="background-color: #F5F5DC;"></span></span>
+                            <span>Price: <span>$18.99</span></span>
+                        </div>
+                        <div class="cart-item-footer">
+                            <div class="cart-item-quantity">
+                                <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
+                            </div>
+                            <span class="cart-item-price">$18.99</span>
+                        </div>
+                    </div>
+                    <button class="cart-item-remove" aria-label="Remove item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="cart-item" data-price="22.50">
+                    <img src="assets/imgs/products/product-11.jpg"
+                        alt="Nike Sportswear Hoodie" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-category">Hoodie</div>
+                        <h4 class="cart-item-name">Nike Sportswear Tech Fleece Hoodie</h4>
+                        <div class="cart-item-meta">
+                            <span>Size: M</span>
+                            <span>Color: <span class="color-circle" style="background-color: #2C2C2C;"></span></span>
+                            <span>Price: <span>$22.50</span></span>
+                        </div>
+                        <div class="cart-item-footer">
+                            <div class="cart-item-quantity">
+                                <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
+                                <span class="qty-value">1</span>
+                                <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
+                            </div>
+                            <span class="cart-item-price">$22.50</span>
+                        </div>
+                    </div>
+                    <button class="cart-item-remove" aria-label="Remove item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="cart-footer">
+                <div class="cart-subtotal">
+                    <div>
+                        <div class="cart-subtotal-label">Subtotal <span class="cart-subtotal-count">(4 item)</span>
+                        </div>
+                    </div>
+                    <div class="cart-subtotal-amount">$86.48</div>
+                </div>
+
+                <div class="cart-progress">
+                    <div class="cart-progress-bar">
+                        <div class="cart-progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <p class="cart-progress-text">Add <span class="cart-progress-amount">$15.40</span> to cart and get
+                        free shipping!</p>
+                </div>
+
+                <div class="cart-buttons">
+                    <a href="cart.html" class="cart-button primary-btn cart-button-view">View cart</a>
+                    <a href="checkout.html" class="cart-button primary-btn cart-button-checkout">Check out</a>
+                </div>
+
+                <div class="cart-shipping-info">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                    <span>Free shipping on all orders over $150</span>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Mobile Navigation -->
@@ -492,7 +698,7 @@
                 <!-- Best Seller Products -->
                 <div class="products-grid" id="bestseller-products">
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-1.jpg" alt="Wooden keepsake box"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-2.jpg" alt="Wooden keepsake box open"
@@ -547,11 +753,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="product-info">
-
-
                             <h3 class="product-title">Wooden keepsake box</h3>
                             <div class="product-price">
                                 <span class="price-original">$99.99</span>
@@ -561,7 +765,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-3.jpg" alt="White ceramic vase"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-4.jpg" alt="White ceramic vase angle"
@@ -592,7 +796,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">White ceramic vase</h3>
@@ -604,7 +808,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-5.jpg" alt="Set of 3 ceramic vases"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-6.jpg" alt="Set of 3 ceramic vases arranged"
@@ -641,7 +845,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">Set of 3 ceramic vases</h3>
@@ -653,7 +857,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-7.jpg" alt="Wool button down jacket"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-8.jpg" alt="Wool button down jacket detail"
@@ -680,7 +884,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">Wool button down jacket</h3>
@@ -696,7 +900,7 @@
                 <!-- Trend Products (hidden initially) -->
                 <div class="products-grid" id="trend-products" style="display: none;">
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-7.jpg" alt="Wool button down jacket"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-8.jpg" alt="Wool button down jacket detail"
@@ -723,7 +927,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">Wool button down jacket</h3>
@@ -735,7 +939,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-1.jpg" alt="Wooden keepsake box"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-2.jpg" alt="Wooden keepsake box open"
@@ -790,7 +994,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="product-info">
 
@@ -804,7 +1008,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-3.jpg" alt="White ceramic vase"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-4.jpg" alt="White ceramic vase angle"
@@ -835,7 +1039,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">White ceramic vase</h3>
@@ -847,7 +1051,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-5.jpg" alt="Set of 3 ceramic vases"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-6.jpg" alt="Set of 3 ceramic vases arranged"
@@ -884,7 +1088,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">Set of 3 ceramic vases</h3>
@@ -899,7 +1103,7 @@
                 <!-- On Sale Products (hidden initially) -->
                 <div class="products-grid" id="onsale-products" style="display: none;">
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-3.jpg" alt="White ceramic vase"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-4.jpg" alt="White ceramic vase angle"
@@ -930,7 +1134,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">White ceramic vase</h3>
@@ -942,7 +1146,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-7.jpg" alt="Wool button down jacket"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-8.jpg" alt="Wool button down jacket detail"
@@ -969,7 +1173,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">Wool button down jacket</h3>
@@ -981,7 +1185,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-1.jpg" alt="Wooden keepsake box"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-2.jpg" alt="Wooden keepsake box open"
@@ -1036,7 +1240,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="product-info">
 
@@ -1050,7 +1254,7 @@
                     </div>
 
                     <div class="product-card">
-                        <div class="product-image-container">
+                        <a href="product.html" class="product-image-container">
                             <img src="assets/imgs/products/product-5.jpg" alt="Set of 3 ceramic vases"
                                 class="product-image primary">
                             <img src="assets/imgs/products/product-6.jpg" alt="Set of 3 ceramic vases arranged"
@@ -1087,7 +1291,7 @@
                             <button class="add-to-cart-btn primary-btn">
                                 Add to cart →
                             </button>
-                        </div>
+                        </a>
 
                         <div class="product-info">
                             <h3 class="product-title">Set of 3 ceramic vases</h3>
@@ -1142,7 +1346,7 @@
 
             <div class="products-grid" id="bestseller-products">
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <a href="product.html" class="product-image-container">
                         <img src="assets/imgs/products/product-9.jpg" alt="Wooden keepsake box"
                             class="product-image primary">
                         <img src="assets/imgs/products/product-10.jpg" alt="Wooden keepsake box open"
@@ -1203,7 +1407,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                     <div class="product-info">
                         <h3 class="product-title">Wooden keepsake box</h3>
@@ -1215,7 +1419,7 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <a href="product.html" class="product-image-container">
                         <img src="assets/imgs/products/product-11.jpg" alt="White ceramic vase"
                             class="product-image primary">
                         <img src="assets/imgs/products/product-12.jpg" alt="White ceramic vase angle"
@@ -1246,7 +1450,7 @@
                         <button class="add-to-cart-btn primary-btn">
                             Add to cart →
                         </button>
-                    </div>
+                    </a>
 
                     <div class="product-info">
                         <h3 class="product-title">White ceramic vase</h3>
@@ -1258,7 +1462,7 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <a href="product.html" class="product-image-container">
                         <img src="assets/imgs/products/product-13.jpg" alt="Set of 3 ceramic vases"
                             class="product-image primary">
                         <img src="assets/imgs/products/product-14.jpg" alt="Set of 3 ceramic vases arranged"
@@ -1295,7 +1499,7 @@
                         <button class="add-to-cart-btn primary-btn shop-btn">
                             Add to cart
                         </button>
-                    </div>
+                    </a>
 
                     <div class="product-info">
                         <h3 class="product-title">Set of 3 ceramic vases</h3>
@@ -1307,7 +1511,7 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <a href="product.html" class="product-image-container">
                         <img src="assets/imgs/products/product-15.jpg" alt="Wool button down jacket"
                             class="product-image primary">
                         <img src="assets/imgs/products/product-16.jpg" alt="Wool button down jacket detail"
@@ -1334,7 +1538,7 @@
                         <button class="add-to-cart-btn primary-btn">
                             Add to cart →
                         </button>
-                    </div>
+                    </a>
 
                     <div class="product-info">
                         <h3 class="product-title">Wool button down jacket</h3>
@@ -1825,11 +2029,10 @@
                         </button>
                         <div class="accordion-content">
                             <ul class="footer-links">
-                                <li><a href="#" class="footer-link">my account</a></li>
-                                <li><a href="#" class="footer-link">my cart</a></li>
-                                <li><a href="#" class="footer-link">Track order</a></li>
-                                <li><a href="#" class="footer-link">wishlist</a></li>
-                                <li><a href="#" class="footer-link">book list</a></li>
+                                <li><a href="" class="footer-link">my account</a></li>
+                                <li><a href="cart.html" class="footer-link">my cart</a></li>
+                                <li><a href="track-order.html" class="footer-link">Track order</a></li>
+                                <li><a href="wishlist.html" class="footer-link">wishlist</a></li>
                                 <li><a href="#" class="footer-link">sale off</a></li>
                             </ul>
                         </div>
@@ -1844,10 +2047,10 @@
                         </button>
                         <div class="accordion-content">
                             <ul class="footer-links">
-                                <li><a href="#" class="footer-link">About Us</a></li>
-                                <li><a href="#" class="footer-link">Register</a></li>
-                                <li><a href="#" class="footer-link">login</a></li>
-                                <li><a href="#" class="footer-link">News & Blog</a></li>
+                                <li><a href="about.html" class="footer-link">About Us</a></li>
+                                <li><a href="register.html" class="footer-link">Register</a></li>
+                                <li><a href="login.html" class="footer-link">login</a></li>
+                                <li><a href="blog.html" class="footer-link">News & Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1861,12 +2064,12 @@
                         </button>
                         <div class="accordion-content">
                             <ul class="footer-links">
-                                <li><a href="#" class="footer-link">store locations</a></li>
-                                <li><a href="#" class="footer-link">FAQs</a></li>
-                                <li><a href="#" class="footer-link">Shipping</a></li>
-                                <li><a href="#" class="footer-link">Refunds</a></li>
-                                <li><a href="#" class="footer-link">Careers</a></li>
-                                <li><a href="#" class="footer-link">Term & condition</a></li>
+                                <li><a href="store-locations.html" class="footer-link">store locations</a></li>
+                                <li><a href="faq.html" class="footer-link">FAQs</a></li>
+                                <li><a href="shipping.html" class="footer-link">Shipping</a></li>
+                                <li><a href="refunds.html" class="footer-link">Refunds</a></li>
+                                <li><a href="careers.html" class="footer-link">Careers</a></li>
+                                <li><a href="terms-condition.html" class="footer-link">Term & condition</a></li>
                             </ul>
                         </div>
                     </div>

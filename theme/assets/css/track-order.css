@@ -35,7 +35,7 @@
     margin-bottom: 24px;
 }
 
-.order-tracking-col .form-input {
+/* .order-tracking-col .form-input {
     width: 100%;
     padding: 16px 20px;
     background-color: var(--light-bg);
@@ -52,7 +52,7 @@
     border-color: var(--primary-color);
     background-color: var(--secondary-color);
     box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
-}
+} */
 
 .order-tracking-col .form-input::placeholder {
     color: var(--text-color);
@@ -60,61 +60,7 @@
 
 .order-tracking-col .btn {
     width: 100%;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
 }
-
-
-.order-tracking-col .btn:active {
-    transform: translateY(0);
-}
-
-.order-tracking-col .btn-primary {
-    background-color: var(--primary-color);
-}
-
-.tracking-col.order-tracking-col .btn {
-    margin-top: 8px;
-}
-
-/* .back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--white);
-    border: 2px solid var(--line);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.back-to-top:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.back-to-top:hover svg {
-    stroke: white;
-}
-
-.back-to-top svg {
-    width: 20px;
-    height: 20px;
-    stroke: var(--text);
-    transition: all 0.3s ease;
-} */
 
 @media (max-width: 768px) {
     .order-tracking .container {

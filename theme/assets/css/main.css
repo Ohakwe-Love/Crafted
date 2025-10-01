@@ -95,6 +95,7 @@ li {
 .primary-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     background: var(--primary-color);
     color: var(--secondary-color);
@@ -249,6 +250,25 @@ li {
     #goTop.pos1 {
         bottom: 230px;
     }
+}
+
+input {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: var(--light-bg);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--black);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
 }
 
 .badge {
