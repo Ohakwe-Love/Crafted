@@ -40,17 +40,31 @@ if (faqItems) {
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
+            // console.log(targetSection);
+            
 
             links.forEach(link => link.classList.remove('active'))
 
-            link.classList.add('active')
+            link.classList.add('active');
 
-
+            
             if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+                console.log(targetSection.offsetTop);
+                if (window.innerWidth >= 992) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    hideAllPreview();
+                    modalOverlay.classList.remove("active")
+                } else {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 50,
+                        behavior: 'smooth'
+                    });
+                    hideAllPreview();
+                    modalOverlay.classList.remove("active")
+                }
             }
         });
     });
@@ -63,7 +77,6 @@ if (faqItems) {
         const searchTerm = searchInput.value.trim();
         if (searchTerm) {
             console.log('Searching for:', searchTerm);
-            // Add search functionality here
         }
     });
 
@@ -77,30 +90,32 @@ if (faqItems) {
 // side bar function
 const openSidebarMenu = document.querySelector('.open-sidebar-menu');
 const faqSidebar = document.getElementById('faq-sidebar');
-const sidebarOverlay = document.getElementById('modalOverlay');
+// const sidebarOverlay = document.getElementById('modalOverlay');
 const closeSidebarBtn = document.getElementById('closeFaqSideBar');
 
 function openSidebar() {
     faqSidebar.classList.add('preview');
-    if (sidebarOverlay) {
-        sidebarOverlay.classList.add('preview');
-        sidebarOverlay.style.pointerEvents = 'auto';
+    if (modalOverlay) {
+        modalOverlay.classList.add('active');
+        modalOverlay.style.pointerEvents = 'auto';
     }
 }
 
 function closeSidebar() {
     faqSidebar.classList.remove('preview');
-    if (sidebarOverlay) {
-        sidebarOverlay.style.pointerEvents = 'none';
+    if (modalOverlay) {
+        modalOverlay.classList.remove("active")
+        modalOverlay.style.pointerEvents = 'none';
     }
 }
 
 if (openSidebarMenu && faqSidebar) {
     openSidebarMenu.addEventListener('click', openSidebar);
-    
+
     if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
 
-    if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', closeSidebar);
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeSidebar);
+        modalOverlay.classList.remove('active');
     }
 }

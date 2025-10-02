@@ -594,6 +594,11 @@ header .container {
     visibility: visible;
 }
 
+.modal-overlay.preview {
+    opacity: 1;
+    visibility: visible;
+}
+
 .searchModal {
     position: fixed;
     top: 50%;
@@ -1310,6 +1315,10 @@ header .container {
 
     .logo {
         font-size: 28px;
+    }
+
+    .also-like-section {
+        display: none;
     }
 }
 

@@ -193,22 +193,24 @@ function updateCartTotals() {
     const items = document.querySelectorAll('.cart-item');
     let totalAmount = 0;
     let totalItems = 0;
+    if (items) {
+        items.forEach(item => {
+            const unitPrice = parseFloat(item.dataset.price);
+            const quantity = parseInt(item.querySelector('.qty-value').textContent);
+            const itemTotal = unitPrice * quantity;
 
-    items.forEach(item => {
-        const unitPrice = parseFloat(item.dataset.price);
-        const quantity = parseInt(item.querySelector('.qty-value').textContent);
-        const itemTotal = unitPrice * quantity;
+            // Update item price display
+            item.querySelector('.cart-item-price').textContent = `${itemTotal.toFixed(2)}`;
 
-        // Update item price display
-        item.querySelector('.cart-item-price').textContent = `${itemTotal.toFixed(2)}`;
+            totalAmount += itemTotal;
+            totalItems += quantity;
+        });
 
-        totalAmount += itemTotal;
-        totalItems += quantity;
-    });
+        // Update subtotal
 
-    // Update subtotal
-    document.querySelector('.cart-subtotal-amount').textContent = `${totalAmount.toFixed(2)}`;
-    document.querySelector('.cart-subtotal-count').textContent = `(${totalItems} item${totalItems !== 1 ? 's' : ''})`;
+        document.querySelector('.cart-subtotal-amount') ? document.querySelector('.cart-subtotal-amount').textContent = `${totalAmount.toFixed(2)}` : null;
+        document.querySelector('.cart-subtotal-count') ? document.querySelector('.cart-subtotal-count').textContent = `(${totalItems} item${totalItems !== 1 ? 's' : ''})` : null;
+    }
 
     // Update progress bar
     const remaining = FREE_SHIPPING_THRESHOLD - totalAmount;
@@ -253,92 +255,92 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Quantity increase/decrease functionality
-document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('qty-increase') || e.target.closest('.qty-increase')) {
-        const btn = e.target.classList.contains('qty-increase') ? e.target : e.target.closest('.qty-increase');
-        const qtyValue = btn.parentElement.querySelector('.qty-value');
-        const decreaseBtn = btn.parentElement.querySelector('.qty-decrease');
+// document.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('qty-increase') || e.target.closest('.qty-increase')) {
+//         const btn = e.target.classList.contains('qty-increase') ? e.target : e.target.closest('.qty-increase');
+//         const qtyValue = btn.parentElement.querySelector('.qty-value');
+//         const decreaseBtn = btn.parentElement.querySelector('.qty-decrease');
 
-        let quantity = parseInt(qtyValue.textContent);
-        quantity++;
-        qtyValue.textContent = quantity;
+//         let quantity = parseInt(qtyValue.textContent);
+//         quantity++;
+//         qtyValue.textContent = quantity;
 
-        // Enable decrease button
-        decreaseBtn.disabled = false;
+//         // Enable decrease button
+//         decreaseBtn.disabled = false;
 
-        // Update totals
-        updateCartTotals();
-    }
+//         // Update totals
+//         updateCartTotals();
+//     }
 
-    if (e.target.classList.contains('qty-decrease') || e.target.closest('.qty-decrease')) {
-        const btn = e.target.classList.contains('qty-decrease') ? e.target : e.target.closest('.qty-decrease');
-        const qtyValue = btn.parentElement.querySelector('.qty-value');
+//     if (e.target.classList.contains('qty-decrease') || e.target.closest('.qty-decrease')) {
+//         const btn = e.target.classList.contains('qty-decrease') ? e.target : e.target.closest('.qty-decrease');
+//         const qtyValue = btn.parentElement.querySelector('.qty-value');
 
-        let quantity = parseInt(qtyValue.textContent);
+//         let quantity = parseInt(qtyValue.textContent);
 
-        if (quantity > 1) {
-            quantity--;
-            qtyValue.textContent = quantity;
+//         if (quantity > 1) {
+//             quantity--;
+//             qtyValue.textContent = quantity;
 
-            // Disable button if quantity is 1
-            if (quantity === 1) {
-                btn.disabled = true;
-            }
+//             // Disable button if quantity is 1
+//             if (quantity === 1) {
+//                 btn.disabled = true;
+//             }
 
-            // Update totals
-            updateCartTotals();
-        }
-    }
-});
+//             // Update totals
+//             updateCartTotals();
+//         }
+//     }
+// });
 
 // Remove item functionality
-document.querySelectorAll('.cart-item-remove').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const item = this.closest('.cart-item');
+// document.querySelectorAll('.cart-item-remove').forEach(btn => {
+//     btn.addEventListener('click', function (e) {
+//         e.stopPropagation();
+//         const item = this.closest('.cart-item');
 
-        // Smooth slide out animation
-        item.style.transition = 'all 0.5s ease';
-        item.style.opacity = '0';
-        item.style.transform = 'translateX(100%)';
-        item.style.marginBottom = '0';
-        item.style.paddingBottom = '0';
-        item.style.maxHeight = item.offsetHeight + 'px';
+//         // Smooth slide out animation
+//         item.style.transition = 'all 0.5s ease';
+//         item.style.opacity = '0';
+//         item.style.transform = 'translateX(100%)';
+//         item.style.marginBottom = '0';
+//         item.style.paddingBottom = '0';
+//         item.style.maxHeight = item.offsetHeight + 'px';
 
-        setTimeout(() => {
-            item.style.maxHeight = '0';
-        }, 50);
+//         setTimeout(() => {
+//             item.style.maxHeight = '0';
+//         }, 50);
 
-        setTimeout(() => {
-            item.remove();
-            updateCartTotals();
+//         setTimeout(() => {
+//             item.remove();
+//             updateCartTotals();
 
-            // Check if cart is empty
-            const remainingItems = document.querySelectorAll('.cart-item');
-            if (remainingItems.length === 0) {
-                document.querySelector('.cart-items').innerHTML = `
-                            <div style="text-align: center; padding: 60px 20px; color: var(--text-color);">
-                                <svg style="width: 80px; height: 80px; margin-bottom: 20px; opacity: 0.3;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                <h3 style="font-size: 20px; color: var(--primary-btn); margin-bottom: 8px;">Your cart is empty</h3>
-                                <p style="font-size: 14px;">Add some products to get started!</p>
-                            </div>
-                        `;
-            }
-        }, 350);
-    });
-});
+//             // Check if cart is empty
+//             const remainingItems = document.querySelectorAll('.cart-item');
+//             if (remainingItems.length === 0) {
+//                 document.querySelector('.cart-items').innerHTML = `
+//                             <div style="text-align: center; padding: 60px 20px; color: var(--text-color);">
+//                                 <svg style="width: 80px; height: 80px; margin-bottom: 20px; opacity: 0.3;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+//                                     <circle cx="9" cy="21" r="1"></circle>
+//                                     <circle cx="20" cy="21" r="1"></circle>
+//                                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+//                                 </svg>
+//                                 <h3 style="font-size: 20px; color: var(--primary-btn); margin-bottom: 8px;">Your cart is empty</h3>
+//                                 <p style="font-size: 14px;">Add some products to get started!</p>
+//                             </div>
+//                         `;
+//             }
+//         }, 350);
+//     });
+// });
 
 // Initialize totals on page load
-updateCartTotals();
+// updateCartTotals();
 
 // Disable all decrease buttons that are at quantity 1
-document.querySelectorAll('.qty-decrease').forEach(btn => {
-    const qtyValue = btn.parentElement.querySelector('.qty-value');
-    if (parseInt(qtyValue.textContent) === 1) {
-        btn.disabled = true;
-    }
-});
+// document.querySelectorAll('.qty-decrease').forEach(btn => {
+//     const qtyValue = btn.parentElement.querySelector('.qty-value');
+//     if (parseInt(qtyValue.textContent) === 1) {
+//         btn.disabled = true;
+//     }
+// });

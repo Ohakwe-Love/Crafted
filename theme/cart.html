@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shopping cart - Review your items and proceed to checkout">
+    <title>Shopping Cart | Your Store</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+</head>
+
+<body>
+    <main class="cart-page">
+        <section>
+            <div class="container">
+                <div class="cart-wrapper">
+                    <!-- Left Column: Cart Items -->
+                    <div class="cart-content">
+                        <!-- Cart Alert -->
+                        <div class="cart-alert">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <p>
+                                Your cart will expire in <span class="timer">00:00</span> minutes! Please checkout now
+                                before
+                                your items sell out!
+                            </p>
+                        </div>
+
+                        <!-- Free Shipping Progress -->
+                        <div class="shipping-progress">
+                            <div class="shipping-progress-text">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="3" width="15" height="13"></rect>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                </svg>
+                                <span>Free Shipping for orders over <span class="amount">$150</span></span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Cart Items Table -->
+                        <div class="cart-items">
+                            <div class="cart-table-header">
+                                <div>Product</div>
+                                <div>Price</div>
+                                <div style="text-align: center;">Quality</div>
+                                <div style="text-align: center;">Total price</div>
+                                <div></div>
+                            </div>
+
+                            <div class="cart-items-list">
+                                <!-- Cart Item 1 -->
+                                <div class="cart-item" data-id="1" data-price="22.99">
+                                    <div class="product-info">
+                                        <div class="product-image">
+                                            <img src="assets/images/products/product-11.jpeg"
+                                                alt="Short Sleeve Office Shirt">
+                                        </div>
+                                        <div class="product-details">
+                                            <p>Short Sleeve Office Shirt</p>
+                                            <div class="product-size">
+                                                <span>Size:</span>
+                                                <select>
+                                                    <option>XS</option>
+                                                    <option>S</option>
+                                                    <option>M</option>
+                                                    <option>L</option>
+                                                    <option>XL</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-price" data-label="Price">$22.99</div>
+                                    <div class="quantity-controls" data-label="Quality">
+                                        <button class="quantity-btn decrease-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity-value">1</span>
+                                        <button class="quantity-btn increase-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="product-total" data-label="Total price">$22.99</div>
+                                    <button class="remove-btn" aria-label="Remove item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                            <path
+                                                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Cart Item 2 -->
+                                <div class="cart-item" data-id="2" data-price="35.50">
+                                    <div class="product-info">
+                                        <div class="product-image">
+                                            <img src="assets/images/products/product-7.jpeg"
+                                                alt="Classic Blue Jeans">
+                                        </div>
+                                        <div class="product-details">
+                                            <p>Classic Blue Jeans</p>
+                                            <div class="product-size">
+                                                <span>Size:</span>
+                                                <select>
+                                                    <option>28</option>
+                                                    <option>30</option>
+                                                    <option>32</option>
+                                                    <option>34</option>
+                                                    <option>36</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-price" data-label="Price">$35.50</div>
+                                    <div class="quantity-controls" data-label="Quality">
+                                        <button class="quantity-btn decrease-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity-value">2</span>
+                                        <button class="quantity-btn increase-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="product-total" data-label="Total price">$71.00</div>
+                                    <button class="remove-btn" aria-label="Remove item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                            <path
+                                                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Cart Item 3 -->
+                                <div class="cart-item" data-id="3" data-price="18.75">
+                                    <div class="product-info">
+                                        <div class="product-image">
+                                            <img src="assets/images/products/product-5.jpeg"
+                                                alt="Cotton Baseball Cap">
+                                        </div>
+                                        <div class="product-details">
+                                            <p>Cotton Baseball Cap</p>
+                                            <div class="product-size">
+                                                <span>Size:</span>
+                                                <select>
+                                                    <option>One Size</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-price" data-label="Price">$18.75</div>
+                                    <div class="quantity-controls" data-label="Quality">
+                                        <button class="quantity-btn decrease-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity-value">1</span>
+                                        <button class="quantity-btn increase-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="product-total" data-label="Total price">$18.75</div>
+                                    <button class="remove-btn" aria-label="Remove item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                            <path
+                                                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Cart Item 4 -->
+                                <div class="cart-item" data-id="4" data-price="49.99">
+                                    <div class="product-info">
+                                        <div class="product-image">
+                                            <img src="assets/images/products/product-15.jpeg"
+                                                alt="Lightweight Running Shoes">
+                                        </div>
+                                        <div class="product-details">
+                                            <p>Lightweight Running Shoes</p>
+                                            <div class="product-size">
+                                                <span>Size:</span>
+                                                <select>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                    <option>10</option>
+                                                    <option>11</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-price" data-label="Price">$49.99</div>
+                                    <div class="quantity-controls" data-label="Quality">
+                                        <button class="quantity-btn decrease-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                        <span class="quantity-value">1</span>
+                                        <button class="quantity-btn increase-btn">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="product-total" data-label="Total price">$49.99</div>
+                                    <button class="remove-btn" aria-label="Remove item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                            <path
+                                                d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Voucher Section -->
+                        <div class="voucher-section">
+                            <div class="voucher-input-wrapper">
+                                <input type="text" class="voucher-input" placeholder="Add voucher discount">
+                                <button class="btn apply-btn animate-btn">Apply Code</button>
+                            </div>
+
+                            <div class="voucher-cards">
+
+                                <div class="voucher-card">
+                                    <div class="voucher-card-header">
+                                        <div class="voucher-card-discount">
+                                            <label>Discount</label>
+                                            <span>
+                                                20% OFF
+                                            </span>
+                                        </div>
+                                        <div class="voucher-card-condition">
+                                            For all orders form $200
+                                        </div>
+                                    </div>
+
+                                    <div class="line"></div>
+
+                                    <div class="voucher-card-code">
+                                        <span class="voucher-code">
+                                            Code: MasShin
+                                        </span>
+                                        <button class="btn voucher-apply-btn animate-btn">
+                                            Apply Code
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="voucher-card">
+                                    <div class="voucher-card-header">
+                                        <div class="voucher-card-discount">
+                                            <label>Discount</label>
+                                            <span>
+                                                20% OFF
+                                            </span>
+                                        </div>
+                                        <div class="voucher-card-condition">
+                                            For all orders form $200
+                                        </div>
+                                    </div>
+
+                                    <div class="line"></div>
+
+                                    <div class="voucher-card-code">
+                                        <span class="voucher-code">
+                                            Code: MasShin
+                                        </span>
+                                        <button class="btn voucher-apply-btn animate-btn">
+                                            Apply Code
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="voucher-card">
+                                    <div class="voucher-card-header">
+                                        <div class="voucher-card-discount">
+                                            <label>Discount</label>
+                                            <span>
+                                                20% OFF
+                                            </span>
+                                        </div>
+                                        <div class="voucher-card-condition">
+                                            For all orders form $200
+                                        </div>
+                                    </div>
+
+                                    <div class="line"></div>
+
+                                    <div class="voucher-card-code">
+                                        <span class="voucher-code">
+                                            Code: MasShin
+                                        </span>
+                                        <button class="btn voucher-apply-btn animate-btn">
+                                            Apply Code
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Empty Cart Message -->
+                        <div class="empty-cart">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <h2>Your cart is empty</h2>
+                            <p>Add items to your cart to see them here</p>
+                            <a class="btn animate-btn" href="shop.html">
+                                Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Order Summary -->
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+
+                        <div class="summary-row">
+                            <label>Subtotal</label>
+                            <span class="subtotal-amount"></span>
+                        </div>
+
+                        <div class="summary-row">
+                            <label>Discounts</label>
+                            <span class="discount-amount"></span>
+                        </div>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="shipping-options">
+                            <label
+                                style="display: block; margin-bottom: 12px; font-weight: 600; color: var(--black);">Shipping</label>
+
+                            <div class="shipping-option">
+                                <label>
+                                    <input type="radio" name="shipping" value="0" checked>
+                                    <span>Free Shipping</span>
+                                </label>
+                                <span class="shipping-price">$0.00</span>
+                            </div>
+
+                            <div class="shipping-option">
+                                <label>
+                                    <input type="radio" name="shipping" value="35">
+                                    <span>Local:</span>
+                                </label>
+                                <span class="shipping-price">$35.00</span>
+                            </div>
+
+                            <div class="shipping-option">
+                                <label>
+                                    <input type="radio" name="shipping" value="35">
+                                    <span>Flat Rate:</span>
+                                </label>
+                                <span class="shipping-price">$35.00</span>
+                            </div>
+                        </div>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="summary-total">
+                            <label>Total</label>
+                            <span class="total-amount">$182.97</span>
+                        </div>
+
+                        <button class="btn checkout-btn animate-btn">
+                            Process to checkout
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+
+                        <button class="btn continue-shopping animate-btn">
+                            Continue shopping
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</html>

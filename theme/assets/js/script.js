@@ -255,13 +255,13 @@ class HeroSlider {
 
     goToSlide(index) {
         // Remove active class from current slide and dot
-        if (this.slides) {
+        if (this.slides.length > 0) {
             this.slides[this.currentSlide].classList.remove('active');
             this.dots[this.currentSlide].classList.remove('active');
-    
+
             // Update current slide
             this.currentSlide = index;
-    
+
             // Add active class to new slide and dot
             this.slides[this.currentSlide].classList.add('active');
             this.dots[this.currentSlide].classList.add('active');
@@ -358,11 +358,11 @@ if (categoriesTrack) {
 
             if (dot) {
                 if (i === currentPage) dot.classList.add("active");
-    
+
                 dot.addEventListener("click", () => {
                     goToCategoryPage(i);
                 });
-    
+
                 catDotsContainer.appendChild(dot);
             }
         }
@@ -508,7 +508,6 @@ document.querySelectorAll('.wishlist-btn').forEach(btn => {
     });
 });
 
-
 // testimonials 
 class ReviewsCarousel {
     constructor() {
@@ -532,8 +531,10 @@ class ReviewsCarousel {
 
     init() {
         this.updateArrows();
-        this.prevArrow.addEventListener('click', () => this.prevSlide());
-        this.nextArrow.addEventListener('click', () => this.nextSlide());
+        if (this.prevArrow && this.nextArrow) {
+            this.prevArrow.addEventListener('click', () => this.prevSlide());
+            this.nextArrow.addEventListener('click', () => this.nextSlide());
+        }
 
         // Handle resize
         window.addEventListener('resize', () => {
@@ -572,11 +573,11 @@ class ReviewsCarousel {
     }
 
     updateArrows() {
-        if(this.cards) {
+        if (this.prevArrow && this.nextArrow) {
             // Show/hide and enable/disable arrows based on position
             this.prevArrow.disabled = this.currentIndex === 0;
             this.nextArrow.disabled = this.currentIndex >= this.maxIndex;
-    
+
             // Add active class for visual feedback
             this.prevArrow.classList.toggle('active', this.currentIndex > 0);
             this.nextArrow.classList.toggle('active', this.currentIndex < this.maxIndex);
@@ -587,182 +588,79 @@ class ReviewsCarousel {
         let startX = 0;
         let isDragging = false;
 
-        this.track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        }, { passive: true });
+        if (this.track) {
 
-        this.track.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-        }, { passive: true });
+            this.track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
 
-        this.track.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
+            this.track.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+            }, { passive: true });
 
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
+            this.track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
 
-            if (Math.abs(diff) > 50) { // Minimum swipe distance
-                if (diff > 0) {
-                    this.nextSlide();
-                } else {
-                    this.prevSlide();
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
                 }
-            }
-        }, { passive: true });
+            }, { passive: true });
 
-        // Mouse support for desktop testing
-        let mouseStartX = 0;
-        let isMouseDragging = false;
+            // Mouse support for desktop testing
 
-        this.track.addEventListener('mousedown', (e) => {
-            mouseStartX = e.clientX;
-            isMouseDragging = true;
-            this.track.style.cursor = 'grabbing';
-        });
+            let mouseStartX = 0;
+            let isMouseDragging = false;
 
-        this.track.addEventListener('mousemove', (e) => {
-            if (!isMouseDragging) return;
-            e.preventDefault();
-        });
+            this.track.addEventListener('mousedown', (e) => {
+                mouseStartX = e.clientX;
+                isMouseDragging = true;
+                this.track.style.cursor = 'grabbing';
+            });
 
-        this.track.addEventListener('mouseup', (e) => {
-            if (!isMouseDragging) return;
-            isMouseDragging = false;
-            this.track.style.cursor = 'grab';
+            this.track.addEventListener('mousemove', (e) => {
+                if (!isMouseDragging) return;
+                e.preventDefault();
+            });
 
-            const endX = e.clientX;
-            const diff = mouseStartX - endX;
+            this.track.addEventListener('mouseup', (e) => {
+                if (!isMouseDragging) return;
+                isMouseDragging = false;
+                this.track.style.cursor = 'grab';
 
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    this.nextSlide();
-                } else {
-                    this.prevSlide();
+                const endX = e.clientX;
+                const diff = mouseStartX - endX;
+
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
                 }
-            }
-        });
+            });
 
-        this.track.addEventListener('mouseleave', () => {
-            isMouseDragging = false;
+            this.track.addEventListener('mouseleave', () => {
+                isMouseDragging = false;
+                this.track.style.cursor = 'grab';
+            });
+
             this.track.style.cursor = 'grab';
-        });
-
-        this.track.style.cursor = 'grab';
+        }
     }
 }
 
 // Initialize carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new ReviewsCarousel();
-});
-
-// scroll-to-top
-class DynamicScrollToTop {
-    constructor() {
-        this.button = document.getElementById('scrollToTop');
-        this.progressRing = this.button.querySelector('.scroll-progress');
-        this.progressCircle = this.button.querySelector('.scroll-progress-circle');
-        this.lastScrollTop = 0;
-        this.scrollSpeed = 0;
-        this.isThrottled = false;
-        this.showThreshold = 100;
-
-        this.init();
-    }
-
-    init() {
-        this.bindEvents();
-    }
-
-    bindEvents() {
-        // Throttled scroll event for better performance
-        window.addEventListener('scroll', () => {
-            if (!this.isThrottled) {
-                requestAnimationFrame(() => {
-                    this.handleScroll();
-                    this.isThrottled = false;
-                });
-                this.isThrottled = true;
-            }
-        });
-
-        // Click event for smooth scroll to top
-        this.button.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.scrollToTop();
-        });
-    }
-
-    handleScroll() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / scrollHeight) * 100;
-
-        // Calculate scroll speed
-        this.scrollSpeed = Math.abs(scrollTop - this.lastScrollTop);
-        this.lastScrollTop = scrollTop;
-
-        // Show/hide button based on scroll position
-        if (scrollTop > this.showThreshold) {
-            this.button.classList.add('visible');
-        } else {
-            this.button.classList.remove('visible');
-        }
-
-        // Update progress ring
-        this.updateProgressRing(scrollPercent);
-
-        // Add visual feedback based on scroll speed
-        this.updateScrollSpeedFeedback();
-    }
-
-    updateProgressRing(percent) {
-        // SVG circle progress
-        const radius = 22;
-        const circumference = 2 * Math.PI * radius;
-        const progress = Math.max(0, Math.min(percent, 100));
-        const offset = circumference * (1 - progress / 100);
-        if (this.progressCircle) {
-            this.progressCircle.style.strokeDasharray = `${circumference}`;
-            this.progressCircle.style.strokeDashoffset = `${offset}`;
-        }
-    }
-
-    updateScrollSpeedFeedback() {
-        // Remove previous speed classes
-        this.button.classList.remove('fast-scroll');
-    }
-
-    scrollToTop() {
-        const start = window.pageYOffset;
-        const startTime = performance.now();
-        const duration = 800; // Animation duration in ms
-
-        const easeOutCubic = (t) => {
-            return 1 - Math.pow(1 - t, 3);
-        };
-
-        const animateScroll = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const easedProgress = easeOutCubic(progress);
-
-            window.scrollTo(0, start * (1 - easedProgress));
-
-            if (progress < 1) {
-                requestAnimationFrame(animateScroll);
-            }
-        };
-
-        requestAnimationFrame(animateScroll);
-    }
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new DynamicScrollToTop();
 });
 
 

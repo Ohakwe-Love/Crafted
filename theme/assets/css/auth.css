@@ -3,7 +3,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 .auth-form-container .container {
@@ -243,6 +243,7 @@
 @media (max-width: 600px) {
     .auth-form-container {
         height: auto;
+        min-height: 100vh;
     }
 
     .auth-form-container .form-row {
