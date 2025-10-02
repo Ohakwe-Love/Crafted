@@ -8,31 +8,52 @@
 
 /* Cart Alert Banner */
 .cart-alert {
-    background-color: var(--bg-11);
+    background-color: var(--light-bg);
     padding: 16px 24px;
     margin-bottom: 32px;
     display: flex;
     align-items: center;
     gap: 12px;
     font-size: 14px;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .cart-alert svg {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-
+    display: inline-block;
+    animation: flash 2s infinite;
+    color: var(--accent-color);
 }
 
-.cart-alert .time {
-    color: var(--primary);
+@-webkit-keyframes flash {
+    50%,
+    from,
+    to {
+        opacity: 1;
+    }
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+@keyframes flash {
+    50%,
+    from,
+    to {
+        opacity: 1;
+    }
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+.cart-alert .timer {
+    color: var(--accent-color);
     font-weight: 600;
-}
-
-.cart-alert svg {
-    color: var(--primary);
-    animation: fades 1s infinite;
 }
 
 /* Free Shipping Progress */
@@ -53,7 +74,7 @@
 }
 
 .shipping-progress-text .amount {
-    color: var(--primary);
+    color: var(--accent-color);
     font-weight: 600;
 }
 
@@ -68,7 +89,7 @@
 
 .progress-fill {
     height: 100%;
-    background-color: var(--third);
+    background-color: var(--discount-color);
     border-radius: 999px;
     transition: width 0.3s ease;
     position: relative;
@@ -82,8 +103,8 @@
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background-color: var(--white);
-    border: 3px solid var(--third);
+    background-color: var(--secondary-color);
+    border: 3px solid var(--discount-color);
     border-radius: 50%;
 }
 
@@ -99,8 +120,8 @@
     border-bottom: 1px solid var(--line);
     margin-bottom: 20px;
     font-weight: 600;
-    color: var(--black);
-    background-color: var(--bg-2);
+    color: var(--primary-color);
+    background-color: var(--light-grey);
     padding: 15px;
 }
 
@@ -141,7 +162,7 @@
 .product-details p {
     font-weight: 600;
     margin-bottom: 8px;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .product-size {
@@ -149,13 +170,13 @@
     align-items: center;
     gap: 8px;
     font-size: 12px;
-    color: var(--text);
+    color: var(--text-color);
 }
 
 .product-size select {
     border: none;
     background: transparent;
-    color: var(--text);
+    color: var(--text-color);
     font-family: inherit;
     padding: 0;
     font-size: 12px;
@@ -164,7 +185,7 @@
 /* Price */
 /* .product-price {
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
 } */
 
 /* Quantity Controls */
@@ -173,14 +194,13 @@
     align-items: center;
     gap: 16px;
     justify-content: center;
-    /* border: 1px solid var(--line); */
 }
 
 .quantity-btn {
     width: 32px;
     height: 32px;
     border: 1px solid var(--line);
-    background: var(--white);
+    background: var(--secondary-color);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -190,7 +210,7 @@
 }
 
 .quantity-btn:hover {
-    border-color: var(--black);
+    border-color: var(--primary-color);
 }
 
 .quantity-btn svg {
@@ -211,6 +231,7 @@
 
 /* Remove Button */
 .remove-btn {
+    background-color: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -218,7 +239,7 @@
 .remove-btn svg {
     width: 30px;
     height: 30px;
-    color: var(--black);
+    color: var(--primary-color);
     opacity: .6;
 }
 
@@ -228,7 +249,7 @@
 
 /* Order Summary */
 .order-summary {
-    background-color: var(--bg-2);
+    background-color: var(--light-grey);
     border-radius: 8px;
     padding: 24px;
     position: sticky;
@@ -238,7 +259,7 @@
 .order-summary h2 {
     font-size: 24px;
     margin-bottom: 24px;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .summary-row {
@@ -250,12 +271,12 @@
 }
 
 .summary-row label {
-    color: var(--black);
+    color: var(--primary-color);
     font-weight: 500;
 }
 
 .summary-row span {
-    color: var(--text);
+    color: var(--text-color);
 }
 
 .summary-divider {
@@ -288,17 +309,17 @@
     width: 18px;
     height: 18px;
     cursor: pointer;
-    accent-color: var(--primary);
+    accent-color: var(--accent-color);
 }
 
 .shipping-option span {
     font-size: 16px;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .shipping-price {
     font-size: 16px;
-    color: var(--text);
+    color: var(--text-color);
 }
 
 /* Total */
@@ -312,11 +333,11 @@
 }
 
 .summary-total label {
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .summary-total span {
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 /* Checkout Button */
@@ -328,14 +349,14 @@
 .continue-shopping {
     width: 100%;
     background: transparent;
-    color: var(--black);
-    border: 1px solid var(--line);
+    color: var(--primary-color);
+    border: 1px solid var(--text-color);
 }
 
 .continue-shopping:hover {
-    background-color: var(--black);
-    color: var(--white);
-    border-color: var(--black);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
 }
 
 /* Voucher Section */
@@ -357,13 +378,17 @@
     padding: 16px 20px;
     border: 1px solid var(--line);
     border-radius: 999px;
-    background-color: var(--bg-2);
+    background-color: var(--light-grey);
     font-family: inherit;
     font-size: 16px;
 }
 
+.voucher-input:focus {
+   box-shadow: unset;
+}
+
 .voucher-input::placeholder {
-    color: var(--text-3);
+    color: var(--tertiary-color);
 }
 
 .apply-btn {
@@ -390,10 +415,11 @@
     border: 1.5px solid #c8102f24;
     border-radius: 8px;
     padding: 20px;
-    background-color: var(--white);
+    background-color: var(--secondary-color);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -409,7 +435,7 @@
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background-color: var(--white);
+        background-color: var(--secondary-color);
         box-shadow: 0 0 0 1.5px #c8102f24;
     }
 
@@ -433,15 +459,15 @@
 }
 
 .voucher-card:hover {
-    border-color: var(--primary);
+    border-color: var(--accent-color);
 
     &::after,
     &::before {
-        box-shadow: 0 0 0 1.5px var(--primary);
+        box-shadow: 0 0 0 1.5px var(--accent-color);
     }
 
     .line {
-        border-color: var(--primary);
+        border-color: var(--accent-color);
     }
 }
 
@@ -458,18 +484,18 @@
 .voucher-card-discount label {
     font-size: 14px;
     display: block;
-    color: var(--text);
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
 .voucher-card-discount span {
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .voucher-card-condition {
     font-size: 14px;
-    color: var(--text);
+    color: var(--text-color);
     max-width: 100px;
 }
 
@@ -483,7 +509,7 @@
 .voucher-code {
     font-size: 14px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .voucher-apply-btn {
@@ -506,7 +532,7 @@
     width: 80px;
     height: 80px;
     margin-bottom: 24px;
-    color: var(--text-3);
+    color: var(--tertiary-color);
 }
 
 .empty-cart h2 {
@@ -514,7 +540,7 @@
 }
 
 .empty-cart p {
-    color: var(--text);
+    color: var(--text-color);
     margin-bottom: 32px;
 }
 
@@ -552,7 +578,7 @@
         display: block;
         padding: 0;
         border: none;
-        background-color: var(--white);
+        background-color: var(--secondary-color);
         border-radius: 8px;
         margin-bottom: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -616,7 +642,7 @@
     .cart-item .product-price::before {
         content: 'Price';
         font-weight: 400;
-        color: var(--black);
+        color: var(--primary-color);
     }
 
     /* Quantity row */
@@ -632,7 +658,7 @@
     .cart-item .quantity-controls::before {
         content: 'Quantity';
         font-weight: 400;
-        color: var(--black);
+        color: var(--primary-color);
         font-size: 16px;
     }
 
@@ -652,7 +678,7 @@
     .cart-item .product-total::before {
         content: 'Total';
         font-weight: 400;
-        color: var(--black);
+        color: var(--primary-color);
     }
 
     /* Remove button row */
@@ -668,7 +694,7 @@
     .cart-item .remove-btn::before {
         content: 'Remove';
         font-weight: 400;
-        color: var(--black);
+        color: var(--primary-color);
         font-size: 16px;
     }
 
