@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
+    /* padding-top: 0px; */
 }
 
 /* Desktop Layout - Two Column */
@@ -22,7 +23,7 @@
 }
 
 .coupon-section p span {
-    color: var(--primary);
+    color: var(--accent-color);
     font-weight: 600;
     cursor: pointer;
 }
@@ -37,15 +38,15 @@
     flex: 1;
     padding: 16px 20px;
     border: none;
-    background-color: var(--bg-2);
+    background-color: var(--light-bg);
     border-radius: 999px;
     font-family: "Afacad", sans-serif;
     font-size: 16px;
-    color: var(--text);
+    color: var(--text-color);
 }
 
 .coupon-form input::placeholder {
-    color: var(--text-3);
+    color: var(--tertiary-color);
 }
 
 /* Information Section */
@@ -80,11 +81,11 @@
     width: 100%;
     padding: 16px 20px;
     border: none;
-    background-color: var(--bg-2);
+    background-color: var(--light-bg);
     border-radius: 8px;
     font-family: "Afacad", sans-serif;
     font-size: 16px;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 .form-group textarea {
@@ -94,7 +95,7 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: var(--text-3);
+    color: var(--tertiary-color);
 }
 
 .form-group select {
@@ -127,7 +128,7 @@
     gap: 16px;
     cursor: pointer;
     padding: 20px;
-    background-color: var(--bg-2);
+    background-color: var(--light-bg);
     border-radius: 8px;
     border: 2px solid transparent;
     transition: all 0.3s ease;
@@ -145,13 +146,13 @@
     cursor: pointer;
     flex-shrink: 0;
     appearance: none;
-    border: 2px solid var(--text-3);
+    border: 2px solid var(--tertiary-color);
     border-radius: 50%;
-    background-color: var(--white);
+    background-color: var(--secondary-color);
 }
 
 .payment-radio input[type="radio"]:checked {
-    border-color: var(--black);
+    border-color: var(--primary-color);
 }
 
 .payment-radio input[type="radio"]:checked::after {
@@ -162,13 +163,13 @@
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background-color: var(--black);
+    background-color: var(--primary-color);
     border-radius: 50%;
 }
 
 .payment-radio label {
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
     cursor: pointer;
     flex: 1;
     margin: 0;
@@ -177,7 +178,7 @@
 /* Payment Details */
 .payment-option .payment-details {
     /* padding: 24px; */
-    background-color: var(--white);
+    background-color: var(--secondary-color);
     border-radius: 8px;
     margin-top: 16px;
     opacity: 0;
@@ -195,7 +196,7 @@
 }
 
 .payment-details .bank-intro {
-    color: var(--text);
+    color: var(--text-color);
     line-height: 1.8;
     margin-bottom: 24px;
 }
@@ -208,7 +209,7 @@
 }
 
 .bank-account-card {
-    background-color: var(--bg-2);
+    background-color: var(--light-bg);
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 20px;
@@ -224,14 +225,14 @@
 }
 
 .bank-header svg {
-    color: var(--primary);
+    color: var(--accent-color);
     flex-shrink: 0;
 }
 
 /* .bank-header h4 {
     font-size: 18px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
     margin: 0;
 } */
 
@@ -248,7 +249,7 @@
 
 .bank-label {
     font-size: 13px;
-    color: var(--text);
+    color: var(--text-color);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -259,7 +260,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    background-color: var(--white);
+    background-color: var(--secondary-color);
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 12px 16px;
@@ -268,7 +269,7 @@
 .bank-value {
     font-size: 16px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
     flex: 1;
     font-family: 'Courier New', monospace;
     letter-spacing: 0.5px;
@@ -284,16 +285,16 @@
     justify-content: center;
     border-radius: 6px;
     transition: all 0.3s ease;
-    color: var(--text);
+    color: var(--text-color);
 }
 
 .copy-btn:hover {
-    background-color: var(--bg-2);
-    color: var(--primary);
+    background-color: var(--light-bg);
+    color: var(--accent-color);
 }
 
 .copy-btn.copied {
-    color: var(--success);
+    color: var(--discount-color);
 }
 
 .copy-btn svg {
@@ -301,7 +302,7 @@
 }
 
 .copy-btn.copied svg {
-    stroke: var(--success);
+    stroke: var(--discount-color);
 }
 
 /* Credit Card Form */
@@ -316,7 +317,7 @@
 }
 
 /* .credit-card-form .form-group label {
-    color: var(--black);
+    color: var(--primary-color);
     margin-bottom: 10px;
     text-transform: uppercase;
 }  */
@@ -366,12 +367,12 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: var(--black);
+    accent-color: var(--primary-color);
 }
 
 .checkbox-group label {
     font-size: 16px;
-    color: var(--text);
+    color: var(--text-color);
     cursor: pointer;
     margin: 0;
 }
@@ -396,7 +397,7 @@
     gap: 16px;
     cursor: pointer;
     padding: 20px;
-    background-color: var(--bg-2);
+    background-color: var(--light-bg);
     border-radius: 8px;
     border: 2px solid transparent;
     transition: all 0.3s ease;
@@ -407,7 +408,7 @@
 }
 
 .shipping-radio.selected {
-    border-color: var(--black);
+    border-color: var(--primary-color);
 }
 
 .shipping-left {
@@ -425,13 +426,13 @@
     cursor: pointer;
     flex-shrink: 0;
     appearance: none;
-    border: 2px solid var(--text-3);
+    border: 2px solid var(--tertiary-color);
     border-radius: 50%;
-    background-color: var(--white);
+    background-color: var(--secondary-color);
 }
 
 .shipping-radio input[type="radio"]:checked {
-    border-color: var(--black);
+    border-color: var(--primary-color);
 }
 
 .shipping-radio input[type="radio"]:checked::after {
@@ -442,13 +443,13 @@
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background-color: var(--black);
+    background-color: var(--primary-color);
     border-radius: 50%;
 }
 
 .shipping-radio label {
     font-size: 16px;
-    color: var(--text);
+    color: var(--text-color);
     cursor: pointer;
     margin: 0;
 }
@@ -456,7 +457,7 @@
 .shipping-price {
     font-size: 18px;
     font-weight: 600;
-    color: var(--black);
+    color: var(--primary-color);
 }
 
 /* Terms and Conditions */
@@ -466,7 +467,7 @@
 }
 
 .terms-section p {
-    color: var(--text);
+    color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.8;
 }
@@ -483,19 +484,19 @@
     cursor: pointer;
     flex-shrink: 0;
     margin-top: 2px;
-    accent-color: var(--black);
+    accent-color: var(--primary-color);
 }
 
 .terms-checkbox label {
     font-size: 16px;
-    color: var(--text);
+    color: var(--text-color);
     cursor: pointer;
     margin: 0;
     line-height: 1.6;
 }
 
 .terms-checkbox label a {
-    color: var(--primary);
+    color: var(--accent-color);
     font-weight: 600;
 }
 
@@ -504,7 +505,7 @@
 }
 
 .terms-checkbox label .required {
-    color: var(--primary);
+    color: var(--accent-color);
     margin-left: 4px;
 }
 
@@ -570,24 +571,24 @@
 .order-item-name {
     /* font-size: 16px; */
     font-weight: 500;
-    color: var(--black);
+    color: var(--primary-color);
     margin-bottom: 4px;
 
     &:hover {
         text-decoration: underline;
-        color: var(--primary);
+        color: var(--accent-color);
     }
 }
 
 .order-item-size {
     font-size: 14px;
-    color: var(--text);
+    color: var(--text-color);
 }
 
 .order-item-price {
     /* font-size: 18px;
     font-weight: 600;
-    color: var(--black); */
+    color: var(--primary-color); */
     text-align: right;
 }
 
@@ -608,17 +609,17 @@
 }
 
 .order-summary-label {
-    color: var(--text);
+    color: var(--text-color);
 }
 
 .order-summary-value {
-    color: var(--black);
+    color: var(--primary-color);
     font-weight: 600;
 }
 
 .order-summary-row.total .order-summary-label,
 .order-summary-row.total .order-summary-value {
-    color: var(--black);
+    color: var(--primary-color);
     font-size: 24px;
 }
 

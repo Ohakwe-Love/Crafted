@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Checkout - Complete Your Order</title>
+    <meta name="description" content="Complete your purchase securely with multiple payment options including credit card, bank transfer, and PayPal.">
 
     <!-- css files -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
 
     <!-- fontawesome -->
     <script src="https://kit.fontawesome.com/ee0082ad61.js" crossorigin="anonymous"></script>
 
     <!-- js files -->
-    <script src="assets/js/script.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/checkout.js" defer></script>
 </head>
 
 <body>
@@ -99,7 +100,7 @@
 
             <!-- Desktop Navigation -->
             <nav class="nav-desktop">
-                <a href="index.html" class="active">Home</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="shop.html">Shop</a>
                 <a href="contact.html">Contact</a>
@@ -456,7 +457,7 @@
 
         <div class="mobile-nav-content">
             <div class="mobile-nav-links">
-                <a href="index.html" class="active">Home</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="shop.html">Shop</a>
                 <a href="contact.html">Contact</a>
@@ -572,6 +573,8 @@
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- main container -->
     <main>
         <section class="checkout-section">
             <div class="container">
@@ -583,7 +586,7 @@
                             <p>Have a coupon? <span>Enter your code</span></p>
                             <form class="coupon-form">
                                 <input type="text" placeholder="Enter your code" aria-label="Coupon code">
-                                <button type="submit" class="btn animate-btn">Apply Code</button>
+                                <button type="submit" class="primary-btn">Apply Code</button>
                             </form>
                         </div>
 
@@ -912,7 +915,7 @@
                                         conditions</a> <span class="required">*</span></label>
                             </div>
 
-                            <button type="submit" class="payment-button btn animate-btn">
+                            <button type="submit" class="payment-button primary-btn">
                                 Payment
                             </button>
                         </div>
@@ -925,7 +928,7 @@
                         <div class="order-items">
                             <div class="order-item">
                                 <div class="order-item-image">
-                                    <img src="assets/images/products/product-1.jpeg" alt="Short Sleeve Office Shirt">
+                                    <img src="assets/imgs/products/product-1.jpg" alt="Short Sleeve Office Shirt">
                                 </div>
                                 <div class="order-item-details">
                                     <div>
@@ -940,7 +943,7 @@
 
                             <div class="order-item">
                                 <div class="order-item-image">
-                                    <img src="assets/images/products/product-2.jpeg" alt="Nike Sportswear Tee Shirts">
+                                    <img src="assets/imgs/products/product-9.jpg" alt="Nike Sportswear Tee Shirts">
                                 </div>
                                 <div class="order-item-details">
                                     <div>
@@ -955,7 +958,7 @@
 
                             <div class="order-item">
                                 <div class="order-item-image">
-                                    <img src="assets/images/products/product-3.jpeg" alt="Half Sleeve Crop Top">
+                                    <img src="assets/imgs/products/product-3.jpg" alt="Half Sleeve Crop Top">
                                 </div>
                                 <div class="order-item-details">
                                     <div>
