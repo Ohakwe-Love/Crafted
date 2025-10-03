@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Complete Your Order</title>
+    <meta name="description" content="Complete your purchase securely with multiple payment options including credit card, bank transfer, and PayPal.">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/checkout.css">
+</head>
+<body>
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-container">
+                <!-- Left Column: Forms -->
+                <div class="checkout-left">
+                    <!-- Coupon Section -->
+                    <div class="coupon-section">
+                        <p>Have a coupon? <span>Enter your code</span></p>
+                        <form class="coupon-form">
+                            <input type="text" placeholder="Enter your code" aria-label="Coupon code">
+                            <button type="submit" class="btn animate-btn">Apply Code</button>
+                        </form>
+                    </div>
+
+                    <!-- Information Section -->
+                    <div class="information-section">
+                        <h2>Information</h2>
+                        <form>
+                            <div class="form-grid two-column">
+                                <div class="form-group">
+                                    <input type="text" placeholder="First name" required aria-label="First name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Last name" required aria-label="Last name">
+                                </div>
+                            </div>
+
+                            <div class="form-grid two-column">
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email address" required aria-label="Email address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" placeholder="Phone number" required aria-label="Phone number">
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <select required aria-label="Choose country">
+                                        <option value="">Choose country / Region</option>
+                                        <option value="us">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="ca">Canada</option>
+                                        <option value="ng">Nigeria</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-grid two-column">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Town/City" required aria-label="Town or City">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Street" required aria-label="Street address">
+                                </div>
+                            </div>
+
+                            <div class="form-grid two-column">
+                                <div class="form-group">
+                                    <select required aria-label="Choose state">
+                                        <option value="">Choose State</option>
+                                        <option value="ca">California</option>
+                                        <option value="ny">New York</option>
+                                        <option value="tx">Texas</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Postal code" required aria-label="Postal code">
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <textarea placeholder="Note about your order" aria-label="Order notes"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Payment Section -->
+                    <div class="payment-section">
+                        <h2>Choose Payment Option</h2>
+                        
+                        <!-- Direct Bank Transfer -->
+                        <div class="payment-option active">
+                            <div class="payment-radio">
+                                <input type="radio" name="payment" id="payment-bank" value="bank" checked>
+                                <label for="payment-bank">Direct bank transfer</label>
+                            </div>
+                            <div class="payment-details" id="bank-details">
+                                <p class="bank-intro">
+                                    Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                                </p>
+                                
+                                <div class="bank-accounts">
+                                    <div class="bank-account-card">
+                                        <div class="bank-header">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                                <line x1="2" y1="10" x2="22" y2="10"/>
+                                            </svg>
+                                            <h4>Bank 1: First National Bank</h4>
+                                        </div>
+                                        <div class="bank-detail-row">
+                                            <span class="bank-label">Account Name:</span>
+                                            <div class="bank-value-copy">
+                                                <span class="bank-value">Your Company Name</span>
+                                                <button class="copy-btn" onclick="copyToClipboard('Your Company Name', this)" type="button" aria-label="Copy account name">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="bank-detail-row">
+                                            <span class="bank-label">Account Number:</span>
+                                            <div class="bank-value-copy">
+                                                <span class="bank-value">1234567890</span>
+                                                <button class="copy-btn" onclick="copyToClipboard('1234567890', this)" type="button" aria-label="Copy account number">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="bank-detail-row">
+                                            <span class="bank-label">Routing Number:</span>
+                                            <div class="bank-value-copy">
+                                                <span class="bank-value">123456789</span>
+                                                <button class="copy-btn" onclick="copyToClipboard('123456789', this)" type="button" aria-label="Copy routing number">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bank-account-card">
+                                        <div class="bank-header">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                                <line x1="2" y1="10" x2="22" y2="10"/>
+                                            </svg>
+                                            <h4>Bank 2: Global Trust Bank</h4>
+                                        </div>
+                                        <div class="bank-detail-row">
+                                            <span class="bank-label">Account Name:</span>
+                                            <div class="bank-value-copy">
+                                                <span class="bank-value">Your Company Name</span>
+                                                <button class="copy-btn" onclick="copyToClipboard('Your Company Name', this)" type="button" aria-label="Copy account name">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="bank-detail-row">
+                                            <span class="bank-label">Account Number:</span>
+                                            <div class="bank-value-copy">
+                                                <span class="bank-value">0987654321</span>
+                                                <button class="copy-btn" onclick="copyToClipboard('0987654321', this)" type="button" aria-label="Copy account number">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="bank-detail-row">
+                                            <span class="bank-label">Routing Number:</span>
+                                            <div class="bank-value-copy">
+                                                <span class="bank-value">987654321</span>
+                                                <button class="copy-btn" onclick="copyToClipboard('987654321', this)" type="button" aria-label="Copy routing number">
+                                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Card -->
+                        <div class="payment-option">
+                            <div class="payment-radio">
+                                <input type="radio" name="payment" id="payment-credit" value="credit">
+                                <label for="payment-credit">Credit card</label>
+                            </div>
+                            <div class="payment-details" id="credit-details">
+                                <form class="credit-card-form">
+                                    <div class="form-group">
+                                        <!-- <label for="card-name">
+                                            Name on card
+                                        </label> -->
+                                        <input type="text" id="card-name" placeholder="Name on card" required aria-label="Name on card">
+                                    </div>
+                                    <div class="form-group card-number-wrapper">
+                                        <!-- <label for="card-number">
+                                            Card number
+                                        </label> -->
+                                        <input type="text" id="card-number" placeholder="Card number" maxlength="19" required aria-label="Card number">
+                                        <div class="card-icons">
+                                            <img src="assets/images/payment/visa.png" alt="Visa">
+                                            <img src="assets/images/payment/master-card.png" alt="Mastercard">
+                                            <img src="assets/images/payment/discover.png" alt="Discover">
+                                            <img src="assets/images/payment/amex.png" alt="American Express">
+                                        </div>
+                                    </div>
+                                    <div class="card-grid">
+                                        <div class="form-group">
+                                            <!-- <label for="card-expiry">
+                                                Expiry date
+                                            </label> -->
+                                            <input type="text" id="card-expiry" placeholder="MM/DD/YYYY" maxlength="10" required aria-label="Expiry date">
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <label for="card-cvv">CVV</label> -->
+                                            <input type="text" id="card-cvv" placeholder="CVV" maxlength="4" required aria-label="CVV">
+                                        </div>
+                                    </div>
+                                    <div class="checkbox-group">
+                                        <input type="checkbox" id="save-card">
+                                        <label for="save-card">Save card details</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Cash on Delivery -->
+                        <div class="payment-option">
+                            <div class="payment-radio">
+                                <input type="radio" name="payment" id="payment-cash" value="cash">
+                                <label for="payment-cash">Cash On Delivery</label>
+                            </div>
+                        </div>
+
+                        <!-- PayPal -->
+                        <div class="payment-option">
+                            <div class="payment-radio">
+                                <input type="radio" name="payment" id="payment-paypal" value="paypal">
+                                <label for="payment-paypal">Paypal</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Method Section -->
+                    <div class="shipping-section">
+                        <h2>Shipping Method</h2>
+                        
+                        <div class="shipping-option">
+                            <div class="shipping-radio selected" onclick="selectShipping('free')">
+                                <div class="shipping-left">
+                                    <input type="radio" name="shipping" id="shipping-free" value="free" checked>
+                                    <label for="shipping-free">Free shipping (Estimate in 01/05 - 05/05/2025)</label>
+                                </div>
+                                <div class="shipping-price">$00.00</div>
+                            </div>
+                        </div>
+
+                        <div class="shipping-option">
+                            <div class="shipping-radio" onclick="selectShipping('express')">
+                                <div class="shipping-left">
+                                    <input type="radio" name="shipping" id="shipping-express" value="express">
+                                    <label for="shipping-express">Express shipping (Estimate in 01/05 - 05/05/2025)</label>
+                                </div>
+                                <div class="shipping-price">$5.00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="terms-section">
+                        <p>
+                            Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
+                        </p>
+                        
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I have read and agree to the website <a href="#">terms and conditions</a> <span class="required">*</span></label>
+                        </div>
+
+                        <button type="submit" class="payment-button btn animate-btn">
+                            Payment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Order Summary -->
+                <aside class="order-summary">
+                    <h2>Your Order</h2>
+                    
+                    <div class="order-items">
+                        <div class="order-item">
+                            <div class="order-item-image">
+                                <img src="assets/images/products/product-1.jpeg" alt="Short Sleeve Office Shirt">
+                            </div>
+                            <div class="order-item-details">
+                                <div>
+                                    <a href="product.html" class="order-item-name">
+                                        Short Sleeve Office Shirt
+                                    </a>
+                                    <div class="order-item-size">Size: XS</div>
+                                </div>
+                            </div>
+                            <div class="order-item-price">$22.99</div>
+                        </div>
+
+                        <div class="order-item">
+                            <div class="order-item-image">
+                                <img src="assets/images/products/product-2.jpeg" alt="Nike Sportswear Tee Shirts">
+                            </div>
+                            <div class="order-item-details">
+                                <div>
+                                    <a href="product.html" class="order-item-name">
+                                        Nike Sportswear Tee Shirts
+                                    </a>
+                                    <div class="order-item-size">Size: L</div>
+                                </div>
+                            </div>
+                            <div class="order-item-price">$59.99</div>
+                        </div>
+
+                        <div class="order-item">
+                            <div class="order-item-image">
+                                <img src="assets/images/products/product-3.jpeg" alt="Half Sleeve Crop Top">
+                            </div>
+                            <div class="order-item-details">
+                                <div>
+                                    <a href="product.html" class="order-item-name">
+                                        Half Sleeve Crop Top
+                                    </a>
+                                    <div class="order-item-size">Size: M</div>
+                                </div>
+                            </div>
+                            <div class="order-item-price">$99.99</div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary-row">
+                        <span class="order-summary-label">Discounts</span>
+                        <span class="order-summary-value">$20.00</span>
+                    </div>
+
+                    <div class="order-summary-row">
+                        <span class="order-summary-label">Shipping</span>
+                        <span class="order-summary-value">Free</span>
+                    </div>
+
+                    <div class="order-summary-row total">
+                        <span class="order-summary-label">Total</span>
+                        <span class="order-summary-value">$60.00</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/js/checkout.js"></script>
+</body>
+</html>

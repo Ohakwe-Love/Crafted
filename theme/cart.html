@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Shopping cart - Review your items and proceed to checkout">
+    <title>Shopping Cart | Your Store</title>
 
     <!-- css files -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
     <link rel="stylesheet" href="assets/css/layout.css">
 
     <!-- fontawesome -->
@@ -17,6 +18,7 @@
     <!-- js files -->
     <script src="assets/js/script.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/cart.js" defer></script>
 </head>
 
 <body>
@@ -286,9 +288,9 @@
         <!-- Cart Section -->
         <section class="cart-menu-section">
             <!-- Cart Header -->
-            <div class="cart-header">
-                <h2 class="cart-title">Shopping cart</h2>
-                <button class="cart-close" onclick="toggleCart()" aria-label="Close cart">
+            <div class="cart-menu-header">
+                <h2 class="cart-menu-title">Shopping cart</h2>
+                <button class="cart-menu-close" onclick="toggleCart()" aria-label="Close cart">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
@@ -296,109 +298,109 @@
             </div>
 
             <!-- Cart Items -->
-            <div class="cart-items">
-                <div class="cart-item" data-price="20.00">
+            <div class="cart-menu-items">
+                <div class="cart-menu-item" data-price="20.00">
                     <img src="assets/imgs/products/product-2.jpg"
-                        alt="" loading="lazy" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-category">T-shirt</div>
-                        <h4 class="cart-item-name">Queen fashion long sleeve shirt, basic t-shirt</h4>
-                        <div class="cart-item-meta">
+                        alt="" loading="lazy" class="cart-menu-item-image">
+                    <div class="cart-menu-item-details">
+                        <div class="cart-menu-item-category">T-shirt</div>
+                        <h4 class="cart-menu-item-name">Queen fashion long sleeve shirt, basic t-shirt</h4>
+                        <div class="cart-menu-item-meta">
                             <span>Size: XS</span>
                             <span>Color: <span class="color-circle" style="background-color: #C8A07C;"></span></span>
                             <span>Price: <span>$20.00</span></span>
                         </div>
-                        <div class="cart-item-footer">
-                            <div class="cart-item-quantity">
+                        <div class="cart-menu-item-footer">
+                            <div class="cart-menu-item-quantity">
                                 <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
                                 <span class="qty-value">1</span>
                                 <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
                             </div>
-                            <span class="cart-item-price">$20.00</span>
+                            <span class="cart-menu-item-price">$20.00</span>
                         </div>
                     </div>
-                    <button class="cart-item-remove" aria-label="Remove item">
+                    <button class="cart-menu-item-remove" aria-label="Remove item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
-                <div class="cart-item" data-price="24.99">
+                <div class="cart-menu-item" data-price="24.99">
                     <img src="assets/imgs/products/product-13.jpg"
-                        alt="" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-category">T-shirt</div>
-                        <h4 class="cart-item-name">Champion Reverse Weave Pullover</h4>
-                        <div class="cart-item-meta">
+                        alt="" class="cart-menu-item-image">
+                    <div class="cart-menu-item-details">
+                        <div class="cart-menu-item-category">T-shirt</div>
+                        <h4 class="cart-menu-item-name">Champion Reverse Weave Pullover</h4>
+                        <div class="cart-menu-item-meta">
                             <span>Size: L</span>
                             <span>Color: <span class="color-circle" style="background-color: #8FB896;"></span></span>
                             <span>Price: <span>$24.00</span></span>
                         </div>
-                        <div class="cart-item-footer">
-                            <div class="cart-item-quantity">
+                        <div class="cart-menu-item-footer">
+                            <div class="cart-menu-item-quantity">
                                 <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
                                 <span class="qty-value">1</span>
                                 <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
                             </div>
-                            <span class="cart-item-price">$24.99</span>
+                            <span class="cart-menu-item-price">$24.99</span>
                         </div>
                     </div>
-                    <button class="cart-item-remove" aria-label="Remove item">
+                    <button class="cart-menu-item-remove" aria-label="Remove item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
-                <div class="cart-item" data-price="18.99">
+                <div class="cart-menu-item" data-price="18.99">
                     <img src="assets/imgs/products/product-8.jpg"
-                        alt="ASICS Core Running Sweatshirt" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-category">Sweatshirt</div>
-                        <h4 class="cart-item-name">ASICS Core Running Sweatshirt</h4>
-                        <div class="cart-item-meta">
+                        alt="ASICS Core Running Sweatshirt" class="cart-menu-item-image">
+                    <div class="cart-menu-item-details">
+                        <div class="cart-menu-item-category">Sweatshirt</div>
+                        <h4 class="cart-menu-item-name">ASICS Core Running Sweatshirt</h4>
+                        <div class="cart-menu-item-meta">
                             <span>Size: XS</span>
                             <span>Color: <span class="color-circle" style="background-color: #F5F5DC;"></span></span>
                             <span>Price: <span>$18.99</span></span>
                         </div>
-                        <div class="cart-item-footer">
-                            <div class="cart-item-quantity">
+                        <div class="cart-menu-item-footer">
+                            <div class="cart-menu-item-quantity">
                                 <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
                                 <span class="qty-value">1</span>
                                 <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
                             </div>
-                            <span class="cart-item-price">$18.99</span>
+                            <span class="cart-menu-item-price">$18.99</span>
                         </div>
                     </div>
-                    <button class="cart-item-remove" aria-label="Remove item">
+                    <button class="cart-menu-item-remove" aria-label="Remove item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
-                <div class="cart-item" data-price="22.50">
+                <div class="cart-menu-item" data-price="22.50">
                     <img src="assets/imgs/products/product-11.jpg"
-                        alt="Nike Sportswear Hoodie" class="cart-item-image">
-                    <div class="cart-item-details">
-                        <div class="cart-item-category">Hoodie</div>
-                        <h4 class="cart-item-name">Nike Sportswear Tech Fleece Hoodie</h4>
-                        <div class="cart-item-meta">
+                        alt="Nike Sportswear Hoodie" class="cart-menu-item-image">
+                    <div class="cart-menu-item-details">
+                        <div class="cart-menu-item-category">Hoodie</div>
+                        <h4 class="cart-menu-item-name">Nike Sportswear Tech Fleece Hoodie</h4>
+                        <div class="cart-menu-item-meta">
                             <span>Size: M</span>
                             <span>Color: <span class="color-circle" style="background-color: #2C2C2C;"></span></span>
                             <span>Price: <span>$22.50</span></span>
                         </div>
-                        <div class="cart-item-footer">
-                            <div class="cart-item-quantity">
+                        <div class="cart-menu-item-footer">
+                            <div class="cart-menu-item-quantity">
                                 <button class="qty-btn qty-decrease" aria-label="Decrease quantity">−</button>
                                 <span class="qty-value">1</span>
                                 <button class="qty-btn qty-increase" aria-label="Increase quantity">+</button>
                             </div>
-                            <span class="cart-item-price">$22.50</span>
+                            <span class="cart-menu-item-price">$22.50</span>
                         </div>
                     </div>
-                    <button class="cart-item-remove" aria-label="Remove item">
+                    <button class="cart-menu-item-remove" aria-label="Remove item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
@@ -407,29 +409,29 @@
             </div>
 
             <!-- Cart Footer -->
-            <div class="cart-footer">
-                <div class="cart-subtotal">
+            <div class="cart-menu-footer">
+                <div class="cart-menu-subtotal">
                     <div>
-                        <div class="cart-subtotal-label">Subtotal <span class="cart-subtotal-count">(4 item)</span>
+                        <div class="cart-menu-subtotal-label">Subtotal <span class="cart-menu-subtotal-count">(4 item)</span>
                         </div>
                     </div>
-                    <div class="cart-subtotal-amount">$86.48</div>
+                    <div class="cart-menu-subtotal-amount">$86.48</div>
                 </div>
 
-                <div class="cart-progress">
-                    <div class="cart-progress-bar">
-                        <div class="cart-progress-fill" style="width: 85%;"></div>
+                <div class="cart-menu-progress">
+                    <div class="cart-menu-progress-bar">
+                        <div class="cart-menu-progress-fill" style="width: 85%;"></div>
                     </div>
-                    <p class="cart-progress-text">Add <span class="cart-progress-amount">$15.40</span> to cart and get
+                    <p class="cart-menu-progress-text">Add <span class="cart-menu-progress-amount">$15.40</span> to cart and get
                         free shipping!</p>
                 </div>
 
-                <div class="cart-buttons">
-                    <a href="cart.html" class="cart-button primary-btn cart-button-view">View cart</a>
-                    <a href="checkout.html" class="cart-button primary-btn cart-button-checkout">Check out</a>
+                <div class="cart-menu-buttons">
+                    <a href="cart.html" class="cart-menu-button primary-btn cart-menu-button-view">View cart</a>
+                    <a href="checkout.html" class="cart-menu-button primary-btn cart-menu-button-checkout">Check out</a>
                 </div>
 
-                <div class="cart-shipping-info">
+                <div class="cart-menu-shipping-info">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="1" y="3" width="15" height="13"></rect>
                         <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
@@ -574,6 +576,7 @@
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
+
     <main class="cart-page">
         <section>
             <div class="container">
