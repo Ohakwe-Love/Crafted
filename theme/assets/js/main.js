@@ -375,7 +375,6 @@ function handlePreviewToggle(openMenu, menu) {
 
         menu.classList.add('preview')
         document.body.classList.add('modal-available')
-
     });
 
     closeMenu.addEventListener('click', () => {

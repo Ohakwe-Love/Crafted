@@ -525,7 +525,7 @@
 @media (min-width: 992px) {
     .order-summary {
         position: sticky;
-        top: 0;
+        top: 20px;
     }
 }
 
